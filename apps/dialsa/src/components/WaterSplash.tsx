@@ -75,7 +75,7 @@ export function WaterSplash() {
         }
         @keyframes ripple-out {
           0% { width: 0; height: 0; opacity: 0.5; }
-          100% { width: 100vw; height: 100vw; opacity: 0; }
+          100% { width: 200%; height: 200%; opacity: 0; }
         }
       `}</style>
     </div>
