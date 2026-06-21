@@ -4,8 +4,10 @@ import { useState } from "react";
 
 export function ContactForm({
   submitLabel = "Enviar mensaje",
+  apiEndpoint = "/api/contacto",
 }: {
   submitLabel?: string;
+  apiEndpoint?: string;
 }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
@@ -15,9 +17,29 @@ export function ContactForm({
     e.preventDefault();
     setStatus("sending");
 
-    // Beta: simulamos envío
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setStatus("sent");
+    const form = e.currentTarget;
+    const data = {
+      nombre: (form.elements.namedItem("nombre") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      telefono: (form.elements.namedItem("telefono") as HTMLInputElement).value,
+      mensaje: (form.elements.namedItem("mensaje") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch(apiEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (status === "sent") {
@@ -35,6 +57,11 @@ export function ContactForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {status === "error" && (
+        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700">
+          Error al enviar. Inténtalo de nuevo o llámanos directamente.
+        </div>
+      )}
       <div>
         <label
           htmlFor="nombre"
