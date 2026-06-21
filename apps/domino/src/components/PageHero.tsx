@@ -24,7 +24,7 @@ export function PageHero({
         priority
         style={{ animation: "slow-zoom 25s ease-in-out infinite alternate" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary-900/95 via-primary-900/60 to-primary-900/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
 
       <SteamEffect />
 
@@ -42,11 +42,8 @@ export function PageHero({
         </div>
       </div>
 
-      <div className="absolute -bottom-1 left-0 right-0 z-[1]" style={{ lineHeight: 0 }}>
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full" style={{ height: "4vw", minHeight: "30px", maxHeight: "60px", display: "block" }}>
-          <path fill="white" d="M0,30 C240,55 480,5 720,30 C960,55 1200,5 1440,30 L1440,60 L0,60 Z" />
-        </svg>
-      </div>
+      {/* Fade transition — no wave */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
     </section>
   );
 }
