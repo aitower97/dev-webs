@@ -1,0 +1,9 @@
+{
+  "name": "@dev-webs/config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./tsconfig/*": "./tsconfig/*.json",
+    "./eslint/next": "./eslint/next.js"
+  }
+}

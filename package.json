@@ -1,0 +1,26 @@
+{
+  "name": "dev-webs",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "clean": "turbo clean",
+    "dev:dialsa": "turbo dev --filter=@dev-webs/dialsa",
+    "dev:domino": "turbo dev --filter=@dev-webs/domino",
+    "build:dialsa": "turbo build --filter=@dev-webs/dialsa",
+    "build:domino": "turbo build --filter=@dev-webs/domino"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "npm@10.8.2"
+}
