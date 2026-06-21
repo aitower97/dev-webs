@@ -38,3 +38,4 @@ apps/domino/stitch/
 design-system/
 *.nul
 nul
+.mcp.json
