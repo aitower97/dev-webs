@@ -25,7 +25,7 @@ export const BUSINESS = {
     "Colmenar Viejo, Soto del Real, Manzanares el Real, San Agustín de Guadalix, Sierra Norte de Madrid",
   url: "https://dialsa.es",
   googleMapsEmbed:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.8!2d-3.7685!3d40.6597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAv.+de+los+Remedios%2C+6%2C+28770+Colmenar+Viejo%2C+Madrid!5e0!3m2!1ses!2ses!4v1",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1514.9!2d-3.7685!3d40.6597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422e4a3de29d69%3A0x1!2sAv.+de+Los+Remedios%2C+6%2C+28770+Colmenar+Viejo%2C+Madrid%2C+Spain!5e0!3m2!1ses!2ses",
 };
 
 export const NAV_ITEMS = [

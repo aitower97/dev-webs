@@ -13,6 +13,11 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.warn("SMTP not configured — email not sent. Set SMTP_USER and SMTP_PASS env vars.");
+      return NextResponse.json({ success: true, warning: "SMTP not configured" });
+    }
+
     const transporter = nodemailer.createTransport({
       host: "smtp-mail.outlook.com",
       port: 587,
