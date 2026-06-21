@@ -1,14 +1,17 @@
 export const BUSINESS = {
   name: "Dialsa",
-  legalName: "Dialsa Instalaciones y Servicios",
+  legalName: "Piscinas y Calefacción Dialsa S.L.",
+  tagline: "Piscinas y Calefacción",
   description:
-    "Empresa especializada en instalación y mantenimiento de piscinas, sistemas de riego, calefacción y aerotermia en Colmenar Viejo y la Sierra de Madrid.",
-  phone: "918 000 000",
-  phoneClean: "34918000000",
-  email: "info@dialsa.es",
-  address: "Colmenar Viejo, Madrid",
+    "Empresa familiar en Colmenar Viejo especializada en construcción y mantenimiento de piscinas, calefacción, sistemas de riego, instalación de gas, fontanería y aire acondicionado.",
+  phone: "918 45 17 84",
+  phoneClean: "34918451784",
+  instagram: "dialsa.pyc",
+  instagramUrl: "https://www.instagram.com/dialsa.pyc",
+  address: "Avenida de Los Remedios, 6, 28770 Colmenar Viejo, Madrid",
+  shortAddress: "Colmenar Viejo, Madrid",
   fullAddress: {
-    streetAddress: "Calle Principal, 1",
+    streetAddress: "Avenida de Los Remedios, 6",
     addressLocality: "Colmenar Viejo",
     addressRegion: "Comunidad de Madrid",
     postalCode: "28770",
@@ -18,14 +21,17 @@ export const BUSINESS = {
     latitude: 40.6597,
     longitude: -3.7685,
   },
+  areaServed:
+    "Colmenar Viejo, Soto del Real, Manzanares el Real, San Agustín de Guadalix, Sierra Norte de Madrid",
   url: "https://dialsa.es",
   googleMapsEmbed:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48492.45!2d-3.77!3d40.66!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422f3!2sColmenar+Viejo!5e0!3m2!1ses!2ses!4v1",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.8!2d-3.7685!3d40.6597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAv.+de+los+Remedios%2C+6%2C+28770+Colmenar+Viejo%2C+Madrid!5e0!3m2!1ses!2ses!4v1",
 };
 
 export const NAV_ITEMS = [
   { label: "Inicio", href: "/" },
   { label: "Servicios", href: "/servicios" },
+  { label: "Galería", href: "/galeria" },
   { label: "Sobre Nosotros", href: "/sobre-nosotros" },
   { label: "Contacto", href: "/contacto" },
 ];
@@ -34,33 +40,56 @@ export const SERVICES = [
   {
     title: "Piscinas",
     description:
-      "Construcción, mantenimiento y rehabilitación de piscinas. Tratamiento de agua, sistemas de filtración y climatización.",
-    icon: "🏊",
-    href: "/servicios/piscinas",
-    color: "from-blue-500 to-cyan-400",
+      "Venta, construcción, montaje y mantenimiento de piscinas comunitarias y privadas. Sistemas de filtración, tratamiento de agua y climatización.",
+    href: "/servicios#piscinas",
+    image: "/images/pool-luxury.jpg",
   },
   {
-    title: "Riegos",
+    title: "Calefacción y Chimeneas",
     description:
-      "Diseño e instalación de sistemas de riego automático para jardines, parques y zonas deportivas.",
-    icon: "💧",
-    href: "/servicios/riegos",
-    color: "from-emerald-500 to-teal-400",
+      "Instalación de calderas, radiadores, suelo radiante y casetes de chimenea. Mantenimiento y reparación de sistemas de calefacción.",
+    href: "/servicios#calefaccion",
+    image: "/images/chimenea.jpg",
   },
   {
-    title: "Calefacción",
+    title: "Depuradoras",
     description:
-      "Instalación y mantenimiento de sistemas de calefacción, calderas, radiadores y suelo radiante.",
-    icon: "🔥",
-    href: "/servicios/calefaccion",
-    color: "from-orange-500 to-red-400",
+      "Instalación y mantenimiento de depuradoras y sistemas de tratamiento de agua para piscinas y comunidades.",
+    href: "/servicios#depuradoras",
+    image: "/images/sistema-filtracion.png",
   },
   {
-    title: "Aerotermia",
+    title: "Gas, Fontanería y Aire Acondicionado",
     description:
-      "Sistemas de aerotermia de última generación. Climatización eficiente y sostenible para tu hogar.",
-    icon: "🌿",
-    href: "/servicios/aerotermia",
-    color: "from-green-500 to-lime-400",
+      "Instalación de gas, fontanería integral, obras de reforma y sistemas de aire acondicionado. Servicio técnico y reparaciones.",
+    href: "/servicios#gas-fontaneria",
+    image: "/images/plumbing-modern.jpg",
+  },
+];
+
+export const GALLERY_IMAGES = [
+  {
+    src: "/images/piscina-comunitaria.png",
+    alt: "Piscina comunitaria construida por Dialsa en Colmenar Viejo",
+  },
+  {
+    src: "/images/pool-luxury.jpg",
+    alt: "Piscina de diseño con iluminación",
+  },
+  {
+    src: "/images/piscina-escaleras.png",
+    alt: "Detalle de escaleras de piscina con salvavidas",
+  },
+  {
+    src: "/images/pool-night.jpg",
+    alt: "Piscina con iluminación nocturna",
+  },
+  {
+    src: "/images/piscina-jardin.png",
+    alt: "Piscina privada en jardín en la Sierra de Madrid",
+  },
+  {
+    src: "/images/hero-pool.jpg",
+    alt: "Piscina exterior con vistas",
   },
 ];

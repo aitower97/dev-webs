@@ -1,64 +1,74 @@
 import type { Metadata } from "next";
-import { Container, SectionHeading, CTAButton } from "@dev-webs/ui";
-import { SERVICES } from "@/lib/constants";
+import Image from "next/image";
+import { Container } from "@dev-webs/ui";
+import { SERVICES, BUSINESS } from "@/lib/constants";
+import { SmoothReveal } from "@/components/SmoothReveal";
+import { TiltCard } from "@/components/TiltCard";
+import { MagneticButton } from "@/components/MagneticButton";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Servicios",
-  description:
-    "Piscinas, riegos, calefacción y aerotermia en Colmenar Viejo. Instalación, mantenimiento y reparación.",
+  description: `Piscinas, calefacción, chimeneas, riego, gas, fontanería y aire acondicionado en ${BUSINESS.shortAddress}.`,
 };
 
 export default function ServiciosPage() {
   return (
-    <section className="py-20">
-      <Container>
-        <SectionHeading
-          title="Nuestros Servicios"
-          subtitle="Soluciones profesionales para tu hogar y comunidad en la Sierra de Madrid"
-        />
-        <div className="grid gap-8 sm:grid-cols-2">
-          {SERVICES.map((service) => (
-            <a
-              key={service.title}
-              href={service.href}
-              className="group rounded-2xl bg-white p-8 shadow-md ring-1 ring-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-            >
-              <div
-                className={`mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${service.color} text-3xl`}
-              >
-                {service.icon}
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                {service.title}
-              </h2>
-              <p className="mt-3 text-gray-600 leading-7">
-                {service.description}
-              </p>
-              <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary-600">
-                Ver más
-                <svg
-                  className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+    <>
+      <PageHero
+        tag="Lo que hacemos"
+        title="Nuestros Servicios"
+        subtitle="Soluciones profesionales para tu hogar y comunidad en la Sierra Norte de Madrid."
+        backgroundImage="/images/pool-luxury.jpg"
+      />
+
+      <section className="py-32 bg-white">
+        <Container>
+          <div className="space-y-32">
+            {SERVICES.map((service, i) => (
+              <SmoothReveal key={service.title} direction={i % 2 === 0 ? "left" : "right"}>
+                <div
+                  id={service.href.split("#")[1]}
+                  className={`flex flex-col gap-12 lg:flex-row lg:items-center ${
+                    i % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-            </a>
-          ))}
-        </div>
-        <div className="mt-16 text-center">
-          <CTAButton href="/contacto" variant="primary">
-            Pide presupuesto sin compromiso
-          </CTAButton>
-        </div>
-      </Container>
-    </section>
+                  <TiltCard className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-2xl lg:w-1/2">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                  </TiltCard>
+                  <div className="lg:w-1/2">
+                    <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl">
+                      {service.title}
+                    </h2>
+                    <div className="mt-4 h-1.5 w-16 rounded-full bg-gradient-to-r from-primary-600 to-primary-400" />
+                    <p className="mt-8 text-lg leading-8 text-gray-600">
+                      {service.description}
+                    </p>
+                    <div className="mt-10">
+                      <MagneticButton
+                        href="/contacto"
+                        className="group rounded-2xl bg-primary-600 px-8 py-4 font-bold text-white shadow-lg shadow-primary-600/20 transition-all hover:bg-primary-700 hover:shadow-xl"
+                      >
+                        <span className="flex items-center gap-3">
+                          Pedir presupuesto
+                          <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </span>
+                      </MagneticButton>
+                    </div>
+                  </div>
+                </div>
+              </SmoothReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }

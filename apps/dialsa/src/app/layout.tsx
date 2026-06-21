@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
-import { Header, Footer, WhatsAppButton } from "@dev-webs/ui";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import { WhatsAppButton } from "@dev-webs/ui";
 import { BUSINESS, NAV_ITEMS } from "@/lib/constants";
+import { DialsaHeader } from "@/components/DialsaHeader";
+import { DialsaFooter } from "@/components/DialsaFooter";
 import "./globals.css";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
   title: {
-    default: `${BUSINESS.name} | Piscinas, Riegos, Calefacción y Aerotermia en Colmenar Viejo`,
-    template: `%s | ${BUSINESS.name}`,
+    default: `${BUSINESS.name} | Piscinas, Calefacción y Fontanería en Colmenar Viejo`,
+    template: `%s | ${BUSINESS.name} — Piscinas y Calefacción`,
   },
   description: BUSINESS.description,
   openGraph: {
     type: "website",
     locale: "es_ES",
-    siteName: BUSINESS.name,
+    siteName: BUSINESS.legalName,
   },
 };
 
@@ -23,24 +32,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="es" className={jakarta.variable}>
       <body className="font-sans antialiased">
-        <Header
-          businessName={BUSINESS.name}
-          navItems={NAV_ITEMS}
-          phone={BUSINESS.phone}
-          ctaLabel="Pide Presupuesto"
-          ctaHref="/contacto"
-        />
+        <DialsaHeader navItems={NAV_ITEMS} phone={BUSINESS.phone} />
         <main>{children}</main>
-        <Footer
-          businessName={BUSINESS.name}
-          address={BUSINESS.address}
-          phone={BUSINESS.phone}
-          email={BUSINESS.email}
-          navItems={NAV_ITEMS}
+        <DialsaFooter navItems={NAV_ITEMS} />
+        <WhatsAppButton
+          phone={BUSINESS.phoneClean}
+          message="Hola, me gustaría pedir información sobre vuestros servicios."
         />
-        <WhatsAppButton phone={BUSINESS.phoneClean} />
       </body>
     </html>
   );

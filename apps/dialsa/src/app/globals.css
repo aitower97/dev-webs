@@ -3,20 +3,205 @@
 @source "../../../../packages/ui/src/**/*.tsx";
 
 @theme {
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a5f;
+  /* Azul Dialsa — del logo */
+  --color-primary-50: #eef5ff;
+  --color-primary-100: #d9e8ff;
+  --color-primary-200: #bcd6ff;
+  --color-primary-300: #8ebcff;
+  --color-primary-400: #5996ff;
+  --color-primary-500: #2a72e5;
+  --color-primary-600: #1a6ad4;
+  --color-primary-700: #1565c0;
+  --color-primary-800: #174f94;
+  --color-primary-900: #0d3b6f;
 
-  --color-accent-500: #10b981;
-  --color-accent-600: #059669;
-  --color-accent-700: #047857;
+  /* Rojo accent */
+  --color-accent-50: #fef2f2;
+  --color-accent-100: #fee2e2;
+  --color-accent-200: #fecaca;
+  --color-accent-300: #fca5a5;
+  --color-accent-400: #f87171;
+  --color-accent-500: #ef4444;
+  --color-accent-600: #dc2626;
+  --color-accent-700: #b91c1c;
 
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   ANIMACIONES — Efectos impactantes
+   ============================================ */
+
+/* Slow zoom for hero background */
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* Water ripple effect */
+@keyframes water-ripple {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 0.3; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes water-wave {
+  0% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-5px) translateY(-3px); }
+  50% { transform: translateX(0) translateY(-5px); }
+  75% { transform: translateX(5px) translateY(-3px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes water-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Fire flicker */
+@keyframes fire-flicker {
+  0%, 100% { opacity: 1; transform: scaleY(1) translateY(0); }
+  25% { opacity: 0.85; transform: scaleY(1.05) translateY(-2px); }
+  50% { opacity: 0.95; transform: scaleY(0.98) translateY(-1px); }
+  75% { opacity: 0.88; transform: scaleY(1.02) translateY(-3px); }
+}
+
+@keyframes ember-float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-60px) rotate(45deg); opacity: 0; }
+}
+
+/* Fade in on scroll */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Hero text reveal */
+@keyframes text-reveal {
+  from { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Pulse glow for CTAs */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 106, 212, 0.4); }
+  50% { box-shadow: 0 0 20px 6px rgba(26, 106, 212, 0.2); }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Gradient shift */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Utility classes */
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out both;
+}
+
+.animate-fade-in-left {
+  animation: fade-in-left 0.8s ease-out both;
+}
+
+.animate-fade-in-right {
+  animation: fade-in-right 0.8s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out both;
+}
+
+.animate-text-reveal {
+  animation: text-reveal 1s ease-out both;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-water-wave {
+  animation: water-wave 4s ease-in-out infinite;
+}
+
+.animate-fire-flicker {
+  animation: fire-flicker 2s ease-in-out infinite;
+}
+
+.animate-water-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  background-size: 200% 100%;
+  animation: water-shimmer 3s linear infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+/* Water overlay effect */
+.water-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.water-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(26, 106, 212, 0.03) 30%,
+    rgba(26, 106, 212, 0.08) 60%,
+    rgba(26, 106, 212, 0.03) 100%
+  );
+  pointer-events: none;
+  animation: water-wave 6s ease-in-out infinite;
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
