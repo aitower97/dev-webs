@@ -1,49 +1,35 @@
 import type { Metadata } from "next";
-import { Header, Footer, WhatsAppButton } from "@dev-webs/ui";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import { WhatsAppButton } from "@dev-webs/ui";
 import { BUSINESS, NAV_ITEMS } from "@/lib/constants";
+import { RestaurantHeader } from "@/components/RestaurantHeader";
+import { RestaurantFooter } from "@/components/RestaurantFooter";
 import "./globals.css";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
   title: {
-    default: `${BUSINESS.name} | Restaurante en Las Tablas, Madrid`,
+    default: `${BUSINESS.name} | Bar Restaurante en Las Tablas, Madrid`,
     template: `%s | ${BUSINESS.name}`,
   },
   description: BUSINESS.description,
-  openGraph: {
-    type: "website",
-    locale: "es_ES",
-    siteName: BUSINESS.name,
-  },
+  openGraph: { type: "website", locale: "es_ES", siteName: BUSINESS.legalName },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" className={jakarta.variable}>
       <body className="font-sans antialiased">
-        <Header
-          businessName={BUSINESS.name}
-          navItems={NAV_ITEMS}
-          phone={BUSINESS.phone}
-          ctaLabel="Reservar Mesa"
-          ctaHref="/contacto"
-        />
+        <RestaurantHeader navItems={NAV_ITEMS} phone={BUSINESS.phone} />
         <main>{children}</main>
-        <Footer
-          businessName={BUSINESS.name}
-          address={BUSINESS.address}
-          phone={BUSINESS.phone}
-          email={BUSINESS.email}
-          navItems={NAV_ITEMS}
-        />
-        <WhatsAppButton
-          phone={BUSINESS.phoneClean}
-          message="Hola, me gustaría hacer una reserva."
-        />
+        <RestaurantFooter navItems={NAV_ITEMS} />
+        <WhatsAppButton phone={BUSINESS.phoneClean} message="Hola, me gustaría hacer una reserva." />
       </body>
     </html>
   );
