@@ -112,21 +112,21 @@ export default function HomePage() {
                 </span>
               </MagneticButton>
             </div>
+
+            {/* Scroll indicator — z-[60] por delante de la wave */}
+            <div className="relative z-[60] mt-10" style={{ animation: "float 3s ease-in-out infinite" }}>
+              <div className="flex flex-col items-center gap-2 text-red-600">
+                <span className="text-sm font-bold uppercase tracking-widest">Scroll</span>
+                <svg className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2" style={{ animation: "float 3s ease-in-out infinite" }}>
-          <div className="flex flex-col items-center gap-2 text-white/40">
-            <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
-        </div>
-
-        {/* Wave transition al siguiente sección — orgánico, no recto */}
-        <div className="absolute bottom-0 left-0 right-0" style={{ lineHeight: 0 }}>
+        {/* Wave transition — z-[1] para que el scroll lo tape */}
+        <div className="absolute bottom-0 left-0 right-0 z-[1]" style={{ lineHeight: 0 }}>
           <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full" style={{ height: "80px", display: "block" }}>
             <path fill="white" d="M0,80 C240,120 480,40 720,80 C960,120 1200,40 1440,80 L1440,120 L0,120 Z" />
           </svg>
