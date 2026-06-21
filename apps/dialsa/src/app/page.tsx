@@ -47,11 +47,11 @@ export default function HomePage() {
               }}
             >
               <Image
-                src="/images/logo-azul.png"
+                src="/images/logo-blanco.png"
                 alt="Dialsa - Piscinas y Calefacción"
                 width={600}
                 height={220}
-                className="h-32 w-auto sm:h-40 lg:h-52 drop-shadow-[0_4px_30px_rgba(255,255,255,0.3)]"
+                className="h-32 w-auto sm:h-40 lg:h-52 drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
                 priority
               />
             </div>
