@@ -47,11 +47,11 @@ export default function HomePage() {
               }}
             >
               <Image
-                src="/images/logo-blanco.png"
+                src="/images/logo-azul.png"
                 alt="Dialsa - Piscinas y Calefacción"
                 width={600}
                 height={220}
-                className="h-32 w-auto sm:h-40 lg:h-52 drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
+                className="h-32 w-auto sm:h-40 lg:h-52 brightness-0 invert drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
                 priority
               />
             </div>
@@ -331,11 +331,11 @@ export default function HomePage() {
           <Container className="relative z-10 text-center">
             <SmoothReveal>
               <Image
-                src="/images/logo-blanco.png"
-                alt="Dialsa"
+                src="/images/logo-azul.png"
+                alt="Dialsa - Piscinas y Calefacción"
                 width={300}
                 height={110}
-                className="mx-auto mb-10 h-20 w-auto sm:h-24"
+                className="mx-auto mb-10 h-20 w-auto sm:h-24 brightness-0 invert"
               />
               <h2 className="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">
                 ¿Listo para empezar?

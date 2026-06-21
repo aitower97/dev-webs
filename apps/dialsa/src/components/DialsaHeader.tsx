@@ -30,12 +30,12 @@ export function DialsaHeader({
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
         <a href="/" className="relative z-10 shrink-0">
           <Image
-            src={scrolled ? "/images/logo-azul.png" : "/images/logo-blanco.png"}
+            src="/images/logo-azul.png"
             alt="Dialsa - Piscinas y Calefacción"
             width={280}
             height={100}
             className={`transition-all duration-500 ${
-              scrolled ? "h-11 w-auto" : "h-14 w-auto sm:h-16"
+              scrolled ? "h-11 w-auto" : "h-14 w-auto sm:h-16 brightness-0 invert"
             }`}
             priority
           />
