@@ -116,7 +116,7 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2" style={{ animation: "float 3s ease-in-out infinite" }}>
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2" style={{ animation: "float 3s ease-in-out infinite" }}>
           <div className="flex flex-col items-center gap-2 text-white/40">
             <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
