@@ -84,9 +84,9 @@ export default function CartaPage() {
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {OFERTAS.map((oferta, i) => {
               const icons = [
-                <svg key="0" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M12 12v9m-3 0h6" /></svg>,
-                <svg key="1" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 7h12a2 2 0 012 2v8a2 2 0 01-2 2H4V7zm12 0h3a2 2 0 012 2v4a2 2 0 01-2 2h-3M7 7V4m4 3V4" /></svg>,
-                <svg key="2" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 3l2 18M16 3l2 18M4 8h6m4 0h6M5 13h4m6 0h4" /></svg>,
+                <svg key="0" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M8 2h8l-4 10-4-10z" /><line x1="12" y1="12" x2="12" y2="20" /><line x1="8" y1="20" x2="16" y2="20" /><circle cx="15" cy="5" r="1.5" fill="currentColor" /></svg>,
+                <svg key="1" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="6" width="12" height="15" rx="2" /><path d="M16 9h2.5a2 2 0 012 2v3a2 2 0 01-2 2H16" /><path d="M4 6c0 0 1-3 6-3s6 3 6 3" /></svg>,
+                <svg key="2" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="8" width="8" height="12" rx="1.5" transform="rotate(-10 6 14)" /><rect x="14" y="8" width="8" height="12" rx="1.5" transform="rotate(10 18 14)" /><path d="M5 8c0 0 .5-2 3.5-2s3.5 2 3.5 2" /><path d="M15 8c0 0 .5-2 3.5-2s3.5 2 3.5 2" /></svg>,
               ];
               return (
                 <SmoothReveal key={oferta.title} delay={i * 0.15}>
