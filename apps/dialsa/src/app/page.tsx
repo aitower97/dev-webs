@@ -38,8 +38,8 @@ export default function HomePage() {
         <WaterSplash />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center">
-            {/* LOGO GRANDE — protagonista absoluto */}
+          <div className="flex flex-col items-center text-center pt-24 sm:pt-28">
+            {/* LOGO GRANDE — protagonista absoluto, debajo del header */}
             <div
               style={{
                 opacity: 0,
@@ -47,11 +47,11 @@ export default function HomePage() {
               }}
             >
               <Image
-                src="/images/logo-blanco.png"
+                src="/images/logo-azul.png"
                 alt="Dialsa - Piscinas y Calefacción"
-                width={500}
-                height={180}
-                className="h-28 w-auto sm:h-36 lg:h-48"
+                width={600}
+                height={220}
+                className="h-32 w-auto sm:h-40 lg:h-52 drop-shadow-[0_4px_30px_rgba(255,255,255,0.3)]"
                 priority
               />
             </div>
