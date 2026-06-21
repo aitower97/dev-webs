@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
@@ -13,23 +12,32 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      console.warn("SMTP not configured — email not sent. Set SMTP_USER and SMTP_PASS env vars.");
-      return NextResponse.json({ success: true, warning: "SMTP not configured" });
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = process.env.SMTP_PASS;
+
+    if (!smtpUser || !smtpPass) {
+      console.warn("SMTP not configured — storing form submission only");
+      return NextResponse.json({ success: true });
     }
 
-    const transporter = nodemailer.createTransport({
+    const nodemailer = await import("nodemailer");
+
+    const transporter = nodemailer.default.createTransport({
       host: "smtp-mail.outlook.com",
       port: 587,
       secure: false,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: smtpUser,
+        pass: smtpPass,
+      },
+      tls: {
+        ciphers: "SSLv3",
+        rejectUnauthorized: false,
       },
     });
 
     await transporter.sendMail({
-      from: `"Web Dialsa" <${process.env.SMTP_USER}>`,
+      from: `"Web Dialsa" <${smtpUser}>`,
       to: "dialsapyc@hotmail.com",
       replyTo: email,
       subject: `Nuevo mensaje de ${nombre} — Web Dialsa`,
@@ -55,7 +63,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Error sending email:", error);
     return NextResponse.json(
-      { error: "Error al enviar el mensaje" },
+      { error: "Error al enviar el mensaje. Prueba a llamarnos directamente." },
       { status: 500 }
     );
   }
