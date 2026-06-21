@@ -125,10 +125,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Wave transition — z-[1] para que el scroll lo tape */}
-        <div className="absolute bottom-0 left-0 right-0 z-[1]" style={{ lineHeight: 0 }}>
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full" style={{ height: "80px", display: "block" }}>
-            <path fill="white" d="M0,80 C240,120 480,40 720,80 C960,120 1200,40 1440,80 L1440,120 L0,120 Z" />
+        {/* Wave transition */}
+        <div className="absolute -bottom-1 left-0 right-0 z-[1]" style={{ lineHeight: 0 }}>
+          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full" style={{ height: "4vw", minHeight: "30px", maxHeight: "60px", display: "block" }}>
+            <path fill="white" d="M0,30 C240,55 480,5 720,30 C960,55 1200,5 1440,30 L1440,60 L0,60 Z" />
           </svg>
         </div>
       </section>
