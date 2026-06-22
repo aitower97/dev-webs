@@ -73,8 +73,15 @@ export function DialsaFooter({
           </div>
         </div>
 
-        <div className="mt-14 border-t border-primary-800 pt-8 text-center text-xs text-primary-400">
-          <p>&copy; {new Date().getFullYear()} Piscinas y Calefacción Dialsa S.L. Todos los derechos reservados.</p>
+        <div className="mt-14 border-t border-primary-800 pt-8 text-xs text-primary-400">
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            <a href="/aviso-legal" className="hover:text-white transition-colors">Aviso Legal</a>
+            <span>·</span>
+            <a href="/politica-privacidad" className="hover:text-white transition-colors">Política de Privacidad</a>
+            <span>·</span>
+            <a href="/politica-cookies" className="hover:text-white transition-colors">Política de Cookies</a>
+          </div>
+          <p className="text-center">&copy; {new Date().getFullYear()} Piscinas y Calefacción Dialsa S.L. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
