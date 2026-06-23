@@ -7,7 +7,7 @@ export function DialsaFooter({
 }) {
   return (
     <footer className="bg-primary-900 text-white">
-      <div className="mx-auto w-full max-w-[90rem] px-6 lg:px-8 py-16">
+      <div className="mx-auto w-full max-w-[92vw] px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <Image
