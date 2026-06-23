@@ -51,8 +51,8 @@ export default function HomePage() {
           </h1>
 
           <p className="mt-8 max-w-xl text-lg text-white/75 sm:text-xl leading-relaxed" style={{ opacity: 0, animation: "text-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards" }}>
-            Empresa familiar en Colmenar Viejo. Piscinas, calefacción,
-            chimeneas, fontanería y mucho más.
+            Empresa familiar en Colmenar Viejo con servicio en toda la
+            Sierra Norte de Madrid. Piscinas, calefacción, chimeneas y mucho más.
           </p>
 
           <div className="mt-12 flex flex-wrap justify-center gap-5" style={{ opacity: 0, animation: "text-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards" }}>
@@ -186,8 +186,8 @@ export default function HomePage() {
               </h2>
               <div className="mt-6 h-1.5 w-20 rounded-full bg-gradient-to-r from-accent-600 to-accent-400" />
               <p className="mt-8 text-lg text-gray-600 leading-8">
-                No somos una franquicia ni una empresa de fuera. Somos de Colmenar Viejo,
-                conocemos la zona, conocemos a nuestros vecinos. Cuando llamas, te cogemos nosotros.
+                Somos de Colmenar Viejo y trabajamos en toda la Sierra Norte de Madrid.
+                Conocemos la zona, conocemos a nuestros vecinos. Cuando llamas, te cogemos nosotros.
               </p>
               <TiltCard className="mt-10 relative overflow-hidden rounded-2xl shadow-2xl">
                 <div className="relative aspect-[4/5]">

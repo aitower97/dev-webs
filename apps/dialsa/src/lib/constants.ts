@@ -3,7 +3,7 @@ export const BUSINESS = {
   legalName: "Piscinas y Calefacción Dialsa S.L.",
   tagline: "Piscinas y Calefacción",
   description:
-    "Empresa familiar en Colmenar Viejo especializada en construcción y mantenimiento de piscinas, calefacción, sistemas de riego, instalación de gas, fontanería y aire acondicionado.",
+    "Empresa familiar en Colmenar Viejo con servicio en toda la Sierra Norte de Madrid. Especialistas en piscinas, calefacción, depuradoras, aerotermia y aire acondicionado.",
   phone: "918 45 17 84",
   phoneClean: "34918451784",
   whatsapp: "34624432508",

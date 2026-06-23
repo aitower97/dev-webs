@@ -16,29 +16,32 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
   title: {
-    default: "Piscinas y Calefacción en Colmenar Viejo | Dialsa",
-    template: "%s | Dialsa — Piscinas y Calefacción Colmenar Viejo",
+    default: "Piscinas y Calefacción en Colmenar Viejo y Sierra Norte de Madrid | Dialsa",
+    template: "%s | Dialsa — Piscinas y Calefacción Sierra Norte de Madrid",
   },
   description:
-    "Empresa de piscinas, calefacción, chimeneas, depuradoras y fontanería en Colmenar Viejo y Sierra Norte de Madrid. Presupuesto sin compromiso. ☎ 918 45 17 84",
+    "Empresa familiar en Colmenar Viejo con servicio en toda la Sierra Norte de Madrid. Piscinas, calefacción, chimeneas, depuradoras, aerotermia y aire acondicionado. ☎ 918 45 17 84",
   keywords: [
     "piscinas Colmenar Viejo",
+    "piscinas Sierra Norte Madrid",
     "calefacción Colmenar Viejo",
+    "calefacción Sierra Norte Madrid",
     "chimeneas Sierra Norte Madrid",
     "depuradoras piscinas Madrid",
+    "aerotermia Colmenar Viejo",
+    "aire acondicionado Sierra Norte Madrid",
+    "construcción piscinas Sierra Norte",
+    "mantenimiento piscinas Colmenar Viejo",
     "fontanería Colmenar Viejo",
-    "aire acondicionado Colmenar Viejo",
-    "construcción piscinas Madrid",
-    "mantenimiento piscinas",
-    "instalación calderas Colmenar Viejo",
+    "instalación calderas Sierra Norte Madrid",
   ],
   openGraph: {
     type: "website",
     locale: "es_ES",
     siteName: BUSINESS.legalName,
-    title: "Piscinas y Calefacción en Colmenar Viejo | Dialsa",
+    title: "Piscinas y Calefacción en Colmenar Viejo y Sierra Norte de Madrid | Dialsa",
     description:
-      "Empresa familiar de piscinas, calefacción y fontanería en Colmenar Viejo. Presupuesto gratis.",
+      "Empresa familiar en Colmenar Viejo con servicio en toda la Sierra Norte de Madrid. Presupuesto gratis.",
   },
   alternates: {
     canonical: BUSINESS.url,

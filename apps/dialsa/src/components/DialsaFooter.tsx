@@ -18,8 +18,8 @@ export function DialsaFooter({
               className="h-20 w-auto brightness-0 invert"
             />
             <p className="mt-4 text-sm leading-6 text-primary-200">
-              Empresa familiar en Colmenar Viejo. Piscinas, calefacción, riego,
-              fontanería y aire acondicionado.
+              Empresa familiar en Colmenar Viejo con servicio en toda la
+              Sierra Norte de Madrid.
             </p>
           </div>
 
