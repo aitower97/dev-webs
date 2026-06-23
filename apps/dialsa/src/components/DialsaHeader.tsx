@@ -27,7 +27,7 @@ export function DialsaHeader({
           : "bg-black/30 backdrop-blur-sm py-5"
       }`}
     >
-      <nav className="mx-auto flex max-w-[90rem] items-center justify-between px-6 lg:px-8">
+      <nav className="mx-auto flex max-w-screen-2xl items-center justify-between px-6 lg:px-8">
         <a href="/" className="relative z-10 shrink-0">
           <Image
             src="/images/logos/logo-azul.png"
