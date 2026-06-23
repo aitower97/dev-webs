@@ -87,7 +87,7 @@ export default function HomePage() {
             i % 2 === 0 ? "bg-white" : "bg-gray-50"
           }`}
         >
-          <div className="w-container">
+          <div className="mx-auto w-full max-w-[90rem] px-6 lg:px-8">
             <div
               className={`flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 ${
                 i % 2 === 1 ? "lg:flex-row-reverse" : ""
