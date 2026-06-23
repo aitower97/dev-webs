@@ -13,21 +13,23 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#1565c0",
-          borderRadius: "6px",
-          fontFamily: "sans-serif",
+          background: "linear-gradient(135deg, #1a6ad4 0%, #0d3b6f 100%)",
+          borderRadius: "8px",
         }}
       >
-        <span
-          style={{
-            fontSize: 22,
-            fontWeight: 900,
-            color: "white",
-            lineHeight: 1,
-          }}
-        >
-          D
-        </span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M6 3h5c4.5 0 8 2.8 8 8s-3.5 8-8 8H6V3zM9 6v10h2c3 0 5-2 5-5s-2-5-5-5H9z"
+            fill="white"
+          />
+          <path
+            d="M2 21c2-1.8 4-1.8 6 0s4 1.8 6 0 4-1.8 6 0"
+            stroke="rgba(142,188,255,0.9)"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </svg>
       </div>
     ),
     { ...size }
