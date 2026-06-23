@@ -60,7 +60,7 @@ export default function RootLayout({
         <main>{children}</main>
         <DialsaFooter navItems={NAV_ITEMS} />
         <WhatsAppButton
-          phone={BUSINESS.phoneClean}
+          phone={BUSINESS.whatsapp}
           message="Hola, me gustaría pedir información sobre vuestros servicios."
         />
         <CookieBanner />

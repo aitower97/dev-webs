@@ -11,7 +11,7 @@ export function DialsaFooter({
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <Image
-              src="/images/logo-azul.png"
+              src="/images/logos/logo-azul.png"
               alt="Dialsa - Piscinas y Calefacción"
               width={280}
               height={100}

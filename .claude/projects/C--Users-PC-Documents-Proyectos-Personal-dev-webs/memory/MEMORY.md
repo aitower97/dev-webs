@@ -1,0 +1,2 @@
+- [Dialsa](project_dialsa.md) — Web de piscinas en producción en dialsapyc.es, SEO y legal completos
+- [Las Dos Terrazas](project_domino.md) — Restaurante en Las Tablas, build Vercel fallando, falta SEO/legal/dominio

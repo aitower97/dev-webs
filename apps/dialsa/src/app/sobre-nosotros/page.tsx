@@ -20,7 +20,7 @@ export default function SobreNosotrosPage() {
         tag="Quiénes somos"
         title="Sobre Nosotros"
         subtitle="Empresa familiar al servicio de Colmenar Viejo y la Sierra Norte."
-        backgroundImage="/images/hero-pool.jpg"
+        backgroundImage="/images/piscinas/piscina-jardin-colmenar.jpg"
       />
 
       <section className="py-32 bg-white">
@@ -29,7 +29,7 @@ export default function SobreNosotrosPage() {
             <SmoothReveal direction="left">
               <TiltCard className="relative overflow-hidden rounded-3xl shadow-2xl">
                 <Image
-                  src="/images/logo-azul.png"
+                  src="/images/logos/logo-azul.png"
                   alt={BUSINESS.legalName}
                   width={500}
                   height={250}

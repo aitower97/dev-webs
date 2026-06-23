@@ -17,7 +17,7 @@ export default function ContactoPage() {
         tag="Hablemos"
         title="Contacta con nosotros"
         subtitle="Cuéntanos tu proyecto y te preparamos un presupuesto sin compromiso."
-        backgroundImage="/images/piscina-jardin.png"
+        backgroundImage="/images/piscinas/piscina-piedra-natural.jpg"
       />
 
       <section className="py-32 bg-white">

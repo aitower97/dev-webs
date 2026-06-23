@@ -19,7 +19,7 @@ export default function ServiciosPage() {
         tag="Lo que hacemos"
         title="Nuestros Servicios"
         subtitle="Soluciones profesionales para tu hogar y comunidad en la Sierra Norte de Madrid."
-        backgroundImage="/images/pool-luxury.jpg"
+        backgroundImage="/images/piscinas/piscina-cesped-artificial.jpg"
       />
 
       <section className="py-32 bg-white">

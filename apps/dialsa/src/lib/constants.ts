@@ -6,6 +6,7 @@ export const BUSINESS = {
     "Empresa familiar en Colmenar Viejo especializada en construcción y mantenimiento de piscinas, calefacción, sistemas de riego, instalación de gas, fontanería y aire acondicionado.",
   phone: "918 45 17 84",
   phoneClean: "34918451784",
+  whatsapp: "34624432508",
   instagram: "dialsa.pyc",
   instagramUrl: "https://www.instagram.com/dialsa.pyc",
   address: "Avenida de Los Remedios, 6, 28770 Colmenar Viejo, Madrid",
@@ -42,54 +43,270 @@ export const SERVICES = [
     description:
       "Venta, construcción, montaje y mantenimiento de piscinas comunitarias y privadas. Sistemas de filtración, tratamiento de agua y climatización.",
     href: "/servicios#piscinas",
-    image: "/images/pool-luxury.jpg",
+    image: "/images/piscinas/piscina-jardin-colmenar.jpg",
   },
   {
     title: "Calefacción y Chimeneas",
     description:
       "Instalación de calderas, radiadores, suelo radiante y casetes de chimenea. Mantenimiento y reparación de sistemas de calefacción.",
     href: "/servicios#calefaccion",
-    image: "/images/chimenea.jpg",
+    image: "/images/chimeneas/chimenea.jpg",
   },
   {
     title: "Depuradoras",
     description:
-      "Instalación y mantenimiento de depuradoras y sistemas de tratamiento de agua para piscinas y comunidades.",
+      "Instalación y mantenimiento de depuradoras, sistemas de filtración y tratamiento de agua para piscinas privadas y comunitarias.",
     href: "/servicios#depuradoras",
-    image: "/images/sistema-filtracion.png",
+    image: "/images/depuradoras/depuradora-sistema-completo.png",
   },
   {
-    title: "Gas, Fontanería y Aire Acondicionado",
+    title: "Aire Acondicionado, Aerotermias, Calderas y Termos",
     description:
-      "Instalación de gas, fontanería integral, obras de reforma y sistemas de aire acondicionado. Servicio técnico y reparaciones.",
-    href: "/servicios#gas-fontaneria",
-    image: "/images/plumbing-modern.jpg",
+      "Instalación y mantenimiento de aire acondicionado, sistemas de aerotermia, calderas, termos, suelo radiante y colectores. Eficiencia energética para tu hogar.",
+    href: "/servicios#climatizacion",
+    image: "/images/aerotermias/caldera-termo-instalacion.jpeg",
   },
 ];
 
-export const GALLERY_IMAGES = [
+export type GalleryCategory = "todas" | "piscinas" | "chimeneas" | "depuradoras" | "aerotermias" | "obras";
+
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  category: GalleryCategory;
+}
+
+export const GALLERY_IMAGES: GalleryImage[] = [
+  // Piscinas
   {
-    src: "/images/piscina-comunitaria.png",
-    alt: "Piscina comunitaria construida por Dialsa en Colmenar Viejo",
+    src: "/images/piscinas/piscina-jardin-colmenar.jpg",
+    alt: "Piscina privada con jardín en Colmenar Viejo",
+    category: "piscinas",
   },
   {
-    src: "/images/pool-luxury.jpg",
-    alt: "Piscina de diseño con iluminación",
+    src: "/images/piscinas/piscina-cesped-artificial.jpg",
+    alt: "Piscina con césped artificial y jardín",
+    category: "piscinas",
   },
   {
-    src: "/images/piscina-escaleras.png",
-    alt: "Detalle de escaleras de piscina con salvavidas",
+    src: "/images/piscinas/piscina-piedra-natural.jpg",
+    alt: "Piscina de diseño con acabado en piedra natural",
+    category: "piscinas",
   },
   {
-    src: "/images/pool-night.jpg",
-    alt: "Piscina con iluminación nocturna",
+    src: "/images/piscinas/piscina-construccion-piedra.jpg",
+    alt: "Construcción de piscina — revestimiento en piedra",
+    category: "piscinas",
   },
   {
-    src: "/images/piscina-jardin.png",
-    alt: "Piscina privada en jardín en la Sierra de Madrid",
+    src: "/images/piscinas/piscina-obra-panoramica.jpg",
+    alt: "Piscina en construcción — panorámica de obra",
+    category: "piscinas",
   },
   {
-    src: "/images/hero-pool.jpg",
-    alt: "Piscina exterior con vistas",
+    src: "/images/piscinas/piscina-pequena-moderna.jpg",
+    alt: "Piscina pequeña con acabado moderno",
+    category: "piscinas",
   },
+  {
+    src: "/images/piscinas/piscina-gresite-detalle.jpg",
+    alt: "Detalle de piscina terminada con gresite",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-escaleras-integradas.jpg",
+    alt: "Piscina moderna con escaleras integradas",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-cobertor-automatico.jpg",
+    alt: "Cobertor automático de piscina instalado",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-cobertor-sistema.jpg",
+    alt: "Sistema de cobertor de piscina",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-comunitaria.jpeg",
+    alt: "Piscina comunitaria mantenida por Dialsa",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-jardin-vista.jpg",
+    alt: "Vista de piscina privada terminada",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-piedra-gris.jpg",
+    alt: "Piscina con acabado en piedra gris",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-detalle-acabado.jpg",
+    alt: "Detalle de acabado de piscina",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-construccion-fase.jpg",
+    alt: "Piscina durante fase de construcción",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-obra-panoramica-2.jpg",
+    alt: "Vista panorámica de obra de piscina",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-cesped-general.jpg",
+    alt: "Piscina con jardín — vista general",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/jacuzzi-gresite-circular.jpg",
+    alt: "Jacuzzi circular con acabado en gresite",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-escaleras-gresite-azul.jpg",
+    alt: "Piscina con escaleras de obra y gresite azul",
+    category: "piscinas",
+  },
+  // Chimeneas
+  {
+    src: "/images/chimeneas/chimenea.jpg",
+    alt: "Chimenea de leña encendida — ambiente acogedor",
+    category: "chimeneas",
+  },
+  {
+    src: "/images/chimeneas/casete-rustico.jpg",
+    alt: "Casete de chimenea instalado con acabado rústico",
+    category: "chimeneas",
+  },
+  {
+    src: "/images/chimeneas/casete-piedra.jpg",
+    alt: "Instalación de casete de chimenea en piedra",
+    category: "chimeneas",
+  },
+  {
+    src: "/images/chimeneas/chimenea-moderna-empotrada.jpg",
+    alt: "Chimenea moderna con casete empotrado",
+    category: "chimeneas",
+  },
+  {
+    src: "/images/chimeneas/casete-instalacion-terminada.jpg",
+    alt: "Casete de chimenea — instalación terminada",
+    category: "chimeneas",
+  },
+  // Depuradoras
+  {
+    src: "/images/depuradoras/depuradora-caseta.png",
+    alt: "Depuradora de piscina en caseta exterior",
+    category: "depuradoras",
+  },
+  {
+    src: "/images/depuradoras/depuradora-filtro-rojo.png",
+    alt: "Sistema de filtración con filtro de arena",
+    category: "depuradoras",
+  },
+  {
+    src: "/images/depuradoras/depuradora-cuarto-tecnico.png",
+    alt: "Cuarto técnico con depuradora industrial",
+    category: "depuradoras",
+  },
+  {
+    src: "/images/depuradoras/depuradora-arqueta.png",
+    alt: "Arqueta con sistema de control de depuración",
+    category: "depuradoras",
+  },
+  {
+    src: "/images/depuradoras/depuradora-sistema-completo.png",
+    alt: "Sistema completo de depuración y filtración",
+    category: "depuradoras",
+  },
+  // Aerotermias / Climatización
+  {
+    src: "/images/aerotermias/caldera-termo-instalacion.jpeg",
+    alt: "Caldera y termo eléctrico instalados",
+    category: "aerotermias",
+  },
+  {
+    src: "/images/aerotermias/suelo-radiante-instalacion.jpeg",
+    alt: "Instalación de suelo radiante con tubería",
+    category: "aerotermias",
+  },
+  {
+    src: "/images/aerotermias/suelo-radiante-mortero.jpeg",
+    alt: "Suelo radiante en fase de mortero",
+    category: "aerotermias",
+  },
+  {
+    src: "/images/aerotermias/cuadro-colectores-abierto.jpeg",
+    alt: "Cuadro de colectores de suelo radiante",
+    category: "aerotermias",
+  },
+  {
+    src: "/images/aerotermias/cuadro-colectores-cerrado.jpeg",
+    alt: "Armario de colectores instalado",
+    category: "aerotermias",
+  },
+  // Obras
+  {
+    src: "/images/obras/jacuzzi-construccion-cenital.jpg",
+    alt: "Construcción de jacuzzi circular — fase de obra",
+    category: "obras",
+  },
+  {
+    src: "/images/obras/jacuzzi-construccion-tuberias.jpg",
+    alt: "Estructura de jacuzzi en construcción con tuberías",
+    category: "obras",
+  },
+  {
+    src: "/images/obras/solado-exterior-piscina.jpg",
+    alt: "Detalle de solado exterior para piscina",
+    category: "obras",
+  },
+  {
+    src: "/images/obras/ducha-exterior-piscina.jpg",
+    alt: "Ducha exterior de piscina instalada",
+    category: "obras",
+  },
+  {
+    src: "/images/obras/hornacina-azulejo-obra.jpeg",
+    alt: "Hornacina de baño en fase de obra",
+    category: "obras",
+  },
+  {
+    src: "/images/obras/hornacina-bano-terminada.jpeg",
+    alt: "Hornacina de baño terminada con azulejo decorativo",
+    category: "obras",
+  },
+];
+
+export const VIDEOS = [
+  {
+    src: "/videos/piscina-funcionamiento.mp4",
+    title: "Piscina terminada en funcionamiento",
+    poster: "/images/piscinas/piscina-piedra-natural.jpg",
+  },
+  {
+    src: "/videos/montaje-depuradora.mp4",
+    title: "Montaje completo de depuradora",
+    poster: "/images/depuradoras/depuradora-sistema-completo.png",
+  },
+  {
+    src: "/videos/construccion-jacuzzi.mp4",
+    title: "Proceso de construcción de jacuzzi",
+    poster: "/images/obras/jacuzzi-construccion-cenital.jpg",
+  },
+];
+
+export const GALLERY_CATEGORIES: { key: GalleryCategory; label: string }[] = [
+  { key: "todas", label: "Todos" },
+  { key: "piscinas", label: "Piscinas" },
+  { key: "chimeneas", label: "Chimeneas" },
+  { key: "depuradoras", label: "Depuradoras" },
+  { key: "aerotermias", label: "Climatización" },
+  { key: "obras", label: "Obras" },
 ];
