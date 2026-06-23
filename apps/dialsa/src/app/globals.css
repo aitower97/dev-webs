@@ -3,8 +3,6 @@
 @source "../../../../packages/ui/src/**/*.tsx";
 
 @theme {
-  --max-width-container: 90rem;
-
   /* Azul Dialsa — del logo */
   --color-primary-50: #eef5ff;
   --color-primary-100: #d9e8ff;
@@ -201,6 +199,22 @@
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Wide container — 90rem max */
+.w-container {
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .w-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 /* Smooth scroll + prevent horizontal overflow on mobile */

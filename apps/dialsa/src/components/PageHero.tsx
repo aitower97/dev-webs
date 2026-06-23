@@ -28,7 +28,7 @@ export function PageHero({
 
       <WaterSplash />
 
-      <div className="relative z-10 mx-auto w-full max-w-container px-6 lg:px-8">
+      <div className="relative z-10 w-container">
         <div
           className="max-w-3xl"
           style={{
