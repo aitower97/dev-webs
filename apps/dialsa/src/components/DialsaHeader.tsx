@@ -50,7 +50,7 @@ export function DialsaHeader({
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBg}`}>
+      <header className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-500 ${headerBg}`}>
         <nav className="mx-auto w-full max-w-[92vw] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
           <a href="/" className="shrink-0">
@@ -141,7 +141,7 @@ export function DialsaHeader({
 
       {/* Full-screen mobile menu overlay */}
       <div
-        className={`fixed inset-0 z-[45] flex flex-col lg:hidden transition-opacity duration-500 ${
+        className={`fixed inset-0 z-[190] flex flex-col lg:hidden transition-opacity duration-500 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         style={{ background: "linear-gradient(150deg, #0d3b6f 0%, #061829 100%)" }}

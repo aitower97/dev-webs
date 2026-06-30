@@ -35,7 +35,7 @@ export function MagneticButton({
       className={className}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      style={{ transition: "transform 0.25s ease-out", display: "inline-flex", position: "relative" }}
+      style={{ transition: "transform 0.25s ease-out", display: "inline-flex", position: "relative", zIndex: 1 }}
     >
       {children}
     </a>
