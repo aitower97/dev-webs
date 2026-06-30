@@ -332,7 +332,7 @@ export const VIDEOS = [
   {
     src: "/videos/depuradora-montaje.mp4",
     title: "Montaje e instalación de depuradora",
-    poster: "/images/depuradoras/depuradora-sistema-completo.png",
+    poster: "/images/depuradoras/pantallazo-video.png",
   },
 ];
 
