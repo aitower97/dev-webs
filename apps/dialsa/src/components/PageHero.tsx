@@ -40,7 +40,7 @@ export function PageHero({
           <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary-300">
             {tag}
           </p>
-          <h1 className="mt-4 text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-4 text-5xl font-bold leading-[1.1] text-white font-display sm:text-6xl lg:text-7xl">
             {title}
           </h1>
           <p className="mt-6 max-w-xl text-xl leading-relaxed text-white/70">

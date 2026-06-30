@@ -5,9 +5,10 @@ import { BUSINESS, SERVICES, GALLERY_IMAGES, VIDEOS } from "@/lib/constants";
 import { SmoothReveal } from "@/components/SmoothReveal";
 import { TiltCard } from "@/components/TiltCard";
 import { MagneticButton } from "@/components/MagneticButton";
-import { VideoHero } from "@/components/VideoHero";
+import { PhotoHero } from "@/components/PhotoHero";
 import { HorizontalGallery } from "@/components/HorizontalGallery";
 import { VideoShowcase } from "@/components/VideoShowcase";
+import { StatsSection } from "@/components/StatsSection";
 
 export default function HomePage() {
   return (
@@ -25,11 +26,8 @@ export default function HomePage() {
         }}
       />
 
-      {/* ===== HERO — Vídeo de fondo ===== */}
-      <VideoHero
-        videoSrc="/videos/piscina-funcionamiento.mp4"
-        posterSrc="/images/piscinas/piscina-piedra-natural.jpg"
-      >
+      {/* ===== HERO — Slideshow de fotos ===== */}
+      <PhotoHero>
         <div className="flex flex-col items-center text-center pt-24 sm:pt-28">
           <div style={{ opacity: 0, animation: "scale-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards" }}>
             <Image
@@ -42,7 +40,7 @@ export default function HomePage() {
             />
           </div>
 
-          <h1 className="mt-10 max-w-3xl text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-6xl" style={{ opacity: 0, animation: "text-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards" }}>
+          <h1 className="mt-10 max-w-3xl text-4xl font-bold leading-[1.1] text-white font-display sm:text-5xl lg:text-6xl" style={{ opacity: 0, animation: "text-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards" }}>
             Tu piscina y tu hogar
             <br />
             <span className="bg-gradient-to-r from-primary-300 to-blue-300 bg-clip-text text-transparent">
@@ -70,21 +68,21 @@ export default function HomePage() {
             </MagneticButton>
           </div>
 
-          <div className="relative z-[60] mt-10 mb-20" style={{ animation: "float 3s ease-in-out infinite" }}>
+          <div className="relative z-[60] mt-10 mb-32" style={{ animation: "float 3s ease-in-out infinite" }}>
             <div className="flex flex-col items-center gap-2 text-white/60">
               <span className="text-sm font-bold uppercase tracking-widest">Scroll</span>
               <svg className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
             </div>
           </div>
         </div>
-      </VideoHero>
+      </PhotoHero>
 
       {/* ===== SERVICIOS — Full-screen alternating ===== */}
       {SERVICES.map((service, i) => (
         <section
           key={service.title}
           className={`relative min-h-[80vh] flex items-center overflow-hidden ${
-            i % 2 === 0 ? "bg-white" : "bg-gray-50"
+            i % 2 === 0 ? "bg-white" : "bg-[#F0F7F4]"
           }`}
         >
           <div className="mx-auto w-full max-w-[92vw] px-4 sm:px-6 lg:px-8">
@@ -108,9 +106,9 @@ export default function HomePage() {
 
               <SmoothReveal direction={i % 2 === 0 ? "right" : "left"} delay={0.2} className="lg:w-[45%]">
                 <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary-500">
-                  {String(i + 1).padStart(2, "0")} — Servicio
+                  {service.category}
                 </p>
-                <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                <h2 className="mt-4 text-4xl font-bold text-gray-900 font-display sm:text-5xl lg:text-6xl">
                   {service.title}
                 </h2>
                 <div className="mt-6 h-1.5 w-20 rounded-full bg-gradient-to-r from-primary-600 to-primary-400" />
@@ -141,11 +139,11 @@ export default function HomePage() {
         <Container>
           <SmoothReveal>
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary-400">Portfolio</p>
-            <h2 className="mt-4 text-4xl font-extrabold text-white sm:text-5xl">Nuestros trabajos</h2>
+            <h2 className="mt-4 text-4xl font-bold text-white font-display sm:text-5xl">Nuestros trabajos</h2>
             <div className="mt-4 h-1.5 w-20 rounded-full bg-gradient-to-r from-primary-400 to-blue-400" />
           </SmoothReveal>
         </Container>
-        <div className="mt-12 pl-6 lg:pl-[calc((100vw-80rem)/2+1.5rem)]">
+        <div className="mt-12 pl-4 sm:pl-6 lg:pl-[calc(4vw+2rem)]">
           <HorizontalGallery images={GALLERY_IMAGES} />
         </div>
       </section>
@@ -156,7 +154,7 @@ export default function HomePage() {
           <SmoothReveal>
             <div className="text-center">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary-500">En acción</p>
-              <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="mt-4 text-4xl font-bold text-gray-900 font-display sm:text-5xl">
                 Vídeos de nuestros trabajos
               </h2>
               <div className="mx-auto mt-6 h-1.5 w-20 rounded-full bg-gradient-to-r from-primary-600 to-primary-400" />
@@ -173,13 +171,25 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* ===== STATS ===== */}
+      <StatsSection />
+
       {/* ===== DIFERENCIADOR ===== */}
       <section className="py-32 bg-white overflow-hidden">
         <Container>
-          <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+          {/*
+            Grid 2 columnas × 2 filas:
+            [título  | vacío  ]  ← row auto (altura = título)
+            [foto    | bullets]  ← row auto (altura = foto)
+            Sin items-start → celdas se estiran a la altura de su fila.
+            Bullets: justify-between distribuye sobre la altura de la foto.
+          */}
+          <div className="grid gap-x-16 gap-y-8 lg:grid-cols-[1fr_1.2fr]">
+
+            {/* Fila 1 col 1 — título */}
             <SmoothReveal direction="left">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent-600">Confianza</p>
-              <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="mt-4 text-4xl font-bold text-gray-900 font-display sm:text-5xl">
                 ¿Por qué
                 <br />
                 <span className="text-primary-600">Dialsa?</span>
@@ -189,7 +199,14 @@ export default function HomePage() {
                 Somos de Colmenar Viejo y trabajamos en toda la Sierra Norte de Madrid.
                 Conocemos la zona, conocemos a nuestros vecinos. Cuando llamas, te cogemos nosotros.
               </p>
-              <TiltCard className="mt-10 relative overflow-hidden rounded-2xl shadow-2xl">
+            </SmoothReveal>
+
+            {/* Fila 1 col 2 — vacío */}
+            <div className="hidden lg:block" />
+
+            {/* Fila 2 col 1 — foto completa, sin recorte */}
+            <SmoothReveal direction="left" delay={0.1}>
+              <TiltCard className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/images/tienda/tienda-noche-virgen.png"
@@ -204,44 +221,44 @@ export default function HomePage() {
               </TiltCard>
             </SmoothReveal>
 
-            <SmoothReveal direction="right" delay={0.2}>
-              <div className="space-y-6">
-                {[
-                  {
-                    num: "01",
-                    title: "Empresa familiar",
-                    desc: "Trato directo, sin intermediarios. Tu proyecto lo gestionamos nosotros de principio a fin.",
-                  },
-                  {
-                    num: "02",
-                    title: "Presupuesto sin compromiso",
-                    desc: "Te visitamos, estudiamos tu caso y te damos un presupuesto detallado. Gratis.",
-                  },
-                  {
-                    num: "03",
-                    title: "Servicio integral",
-                    desc: "Piscinas, calefacción, chimeneas, depuradoras, gas, fontanería y A/C. Todo en uno.",
-                  },
-                  {
-                    num: "04",
-                    title: "Sierra Norte de Madrid",
-                    desc: "Colmenar Viejo, Soto del Real, Manzanares, San Agustín de Guadalix y alrededores.",
-                  },
-                ].map((item, i) => (
-                  <SmoothReveal key={item.num} delay={0.3 + i * 0.1}>
-                    <div className="group flex gap-6 rounded-2xl p-6 transition-all duration-500 hover:bg-primary-50">
-                      <span className="shrink-0 text-4xl font-black text-primary-200 transition-colors group-hover:text-primary-500">
-                        {item.num}
-                      </span>
-                      <div>
-                        <h3 className="text-lg font-extrabold text-gray-900">{item.title}</h3>
-                        <p className="mt-1 text-gray-500 leading-6">{item.desc}</p>
-                      </div>
+            {/* Fila 2 col 2 — bullets, misma altura que la foto */}
+            <SmoothReveal direction="right" delay={0.2} className="flex flex-col justify-between">
+              {[
+                {
+                  num: "01",
+                  title: "Empresa familiar",
+                  desc: "Trato directo, sin intermediarios. Tu proyecto lo gestionamos nosotros de principio a fin.",
+                },
+                {
+                  num: "02",
+                  title: "Presupuesto sin compromiso",
+                  desc: "Te visitamos, estudiamos tu caso y te damos un presupuesto detallado. Gratis.",
+                },
+                {
+                  num: "03",
+                  title: "Servicio integral",
+                  desc: "Piscinas, calefacción, chimeneas, depuradoras, gas, fontanería y A/C. Todo en uno.",
+                },
+                {
+                  num: "04",
+                  title: "Sierra Norte de Madrid",
+                  desc: "Colmenar Viejo, Soto del Real, Manzanares, San Agustín de Guadalix y alrededores.",
+                },
+              ].map((item, i) => (
+                <SmoothReveal key={item.num} delay={0.3 + i * 0.1}>
+                  <div className="group flex gap-6 rounded-2xl p-6 transition-all duration-500 hover:bg-primary-50">
+                    <span className="shrink-0 text-4xl font-black text-primary-200 transition-colors group-hover:text-primary-500">
+                      {item.num}
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-extrabold text-gray-900">{item.title}</h3>
+                      <p className="mt-1 text-gray-500 leading-6">{item.desc}</p>
                     </div>
-                  </SmoothReveal>
-                ))}
-              </div>
+                  </div>
+                </SmoothReveal>
+              ))}
             </SmoothReveal>
+
           </div>
         </Container>
       </section>
@@ -259,7 +276,7 @@ export default function HomePage() {
               height={110}
               className="mx-auto mb-10 h-16 w-auto sm:h-20 brightness-0 invert"
             />
-            <h2 className="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">
+            <h2 className="text-4xl font-bold text-white font-display sm:text-5xl lg:text-6xl">
               ¿Listo para empezar?
             </h2>
             <p className="mx-auto mt-8 max-w-xl text-xl text-white/70">

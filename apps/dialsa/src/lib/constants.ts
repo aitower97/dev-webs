@@ -40,6 +40,7 @@ export const NAV_ITEMS = [
 export const SERVICES = [
   {
     title: "Piscinas",
+    category: "Piscinas",
     description:
       "Venta, construcción, montaje y mantenimiento de piscinas comunitarias y privadas. Sistemas de filtración, tratamiento de agua y climatización.",
     href: "/servicios#piscinas",
@@ -47,6 +48,7 @@ export const SERVICES = [
   },
   {
     title: "Calefacción y Chimeneas",
+    category: "Calefacción",
     description:
       "Instalación de calderas, radiadores, suelo radiante y casetes de chimenea. Mantenimiento y reparación de sistemas de calefacción.",
     href: "/servicios#calefaccion",
@@ -54,6 +56,7 @@ export const SERVICES = [
   },
   {
     title: "Depuradoras",
+    category: "Depuradoras",
     description:
       "Instalación y mantenimiento de depuradoras, sistemas de filtración y tratamiento de agua para piscinas privadas y comunitarias.",
     href: "/servicios#depuradoras",
@@ -61,6 +64,7 @@ export const SERVICES = [
   },
   {
     title: "Aire Acondicionado, Aerotermias, Calderas y Termos",
+    category: "Climatización",
     description:
       "Instalación y mantenimiento de aire acondicionado, sistemas de aerotermia, calderas, termos, suelo radiante y colectores. Eficiencia energética para tu hogar.",
     href: "/servicios#climatizacion",

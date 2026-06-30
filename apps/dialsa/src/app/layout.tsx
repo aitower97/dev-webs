@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
 import { WhatsAppButton } from "@dev-webs/ui";
 import { BUSINESS, NAV_ITEMS } from "@/lib/constants";
 import { DialsaHeader } from "@/components/DialsaHeader";
@@ -10,6 +10,13 @@ import "./globals.css";
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -57,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={jakarta.variable}>
+    <html lang="es" className={`${jakarta.variable} ${cormorant.variable}`}>
       <body className="font-sans antialiased">
         <DialsaHeader navItems={NAV_ITEMS} phone={BUSINESS.phone} />
         <main>{children}</main>

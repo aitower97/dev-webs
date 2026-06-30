@@ -5,8 +5,8 @@ import { BUSINESS } from "@/lib/constants";
 import { SmoothReveal } from "@/components/SmoothReveal";
 import { TiltCard } from "@/components/TiltCard";
 import { MagneticButton } from "@/components/MagneticButton";
-import { CountUp } from "@/components/CountUp";
 import { PageHero } from "@/components/PageHero";
+import { StatsSection } from "@/components/StatsSection";
 
 export const metadata: Metadata = {
   title: "Sobre Nosotros",
@@ -25,59 +25,74 @@ export default function SobreNosotrosPage() {
 
       <section className="py-32 bg-white">
         <Container>
-          <div className="mx-auto max-w-5xl grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr]">
+
+            {/* Foto — columna izquierda, sin límite de altura */}
             <SmoothReveal direction="left">
               <TiltCard className="relative overflow-hidden rounded-3xl shadow-2xl">
-                <Image
-                  src="/images/logos/logo-azul.png"
-                  alt={BUSINESS.legalName}
-                  width={500}
-                  height={250}
-                  className="w-full bg-white p-12"
-                />
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src="/images/tienda/tienda-noche-virgen.png"
+                    alt="Tienda Dialsa en Colmenar Viejo durante la procesión de la Virgen de los Remedios"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 pt-16">
+                    <p className="text-sm font-bold text-white/90">Av. de los Remedios, Colmenar Viejo</p>
+                  </div>
+                </div>
               </TiltCard>
             </SmoothReveal>
 
-            <SmoothReveal direction="right" delay={0.2}>
-              <div className="space-y-6 text-gray-600 leading-8">
-                <p className="text-lg">
-                  <strong className="text-gray-900">{BUSINESS.legalName}</strong>{" "}
-                  es una empresa familiar de Colmenar Viejo dedicada a ofrecer
-                  soluciones integrales para el hogar y comunidades.
-                </p>
-                <p>
-                  Nos especializamos en piscinas, calefacción, chimeneas,
-                  riego automático, gas, fontanería y aire acondicionado.
-                </p>
-                <p>
-                  Trabajamos en Colmenar Viejo y toda la Sierra Norte de Madrid.
-                  Cercanía, calidad y atención personalizada.
-                </p>
-              </div>
+            {/* Bullets — misma altura que la foto, distribuidos con justify-between */}
+            <SmoothReveal direction="right" delay={0.2} className="flex flex-col justify-between">
+              {[
+                {
+                  num: "01",
+                  title: "Empresa familiar desde hace más de 20 años",
+                  desc: "Fundada en Colmenar Viejo. Cada proyecto lo gestionamos nosotros de principio a fin, sin intermediarios.",
+                },
+                {
+                  num: "02",
+                  title: "Especialistas en piscinas y climatización",
+                  desc: "Construcción y mantenimiento de piscinas, calefacción, chimeneas, depuradoras, aerotermia y aire acondicionado.",
+                },
+                {
+                  num: "03",
+                  title: "De Colmenar Viejo para la Sierra Norte",
+                  desc: "Conocemos la zona y a nuestros vecinos. Colmenar, Soto del Real, Manzanares, San Agustín y alrededores.",
+                },
+                {
+                  num: "04",
+                  title: "Presupuesto siempre sin compromiso",
+                  desc: "Te visitamos, estudiamos tu caso y te damos un presupuesto detallado. Sin letra pequeña, sin sorpresas.",
+                },
+              ].map((item, i) => (
+                <SmoothReveal key={item.num} delay={0.3 + i * 0.1}>
+                  <div className="group flex gap-6 rounded-2xl p-6 transition-all duration-500 hover:bg-primary-50">
+                    <span className="shrink-0 text-4xl font-black text-primary-200 transition-colors group-hover:text-primary-500">
+                      {item.num}
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-extrabold text-gray-900">{item.title}</h3>
+                      <p className="mt-1 text-gray-500 leading-6">{item.desc}</p>
+                    </div>
+                  </div>
+                </SmoothReveal>
+              ))}
             </SmoothReveal>
-          </div>
 
-          <div className="mt-24 grid gap-8 sm:grid-cols-3">
-            {[
-              { end: 500, suffix: "+", label: "Proyectos realizados" },
-              { end: 15, suffix: "+", label: "Municipios" },
-              { end: 100, suffix: "%", label: "Compromiso" },
-            ].map((stat, i) => (
-              <SmoothReveal key={stat.label} delay={i * 0.15}>
-                <TiltCard className="cursor-default rounded-3xl bg-primary-50 p-10 text-center">
-                  <p className="text-5xl font-black text-primary-600">
-                    <CountUp end={stat.end} suffix={stat.suffix} />
-                  </p>
-                  <p className="mt-3 text-sm font-bold uppercase tracking-widest text-gray-500">
-                    {stat.label}
-                  </p>
-                </TiltCard>
-              </SmoothReveal>
-            ))}
           </div>
+        </Container>
+      </section>
 
-          <SmoothReveal delay={0.3}>
-            <div className="mt-16 text-center">
+      {/* Números — igual que en el inicio */}
+      <StatsSection />
+
+      <section className="py-20 bg-white">
+        <Container>
+          <SmoothReveal delay={0.2}>
+            <div className="text-center">
               <MagneticButton
                 href="/contacto"
                 className="group rounded-2xl bg-primary-600 px-10 py-5 text-lg font-bold text-white shadow-lg shadow-primary-600/20 transition-all hover:bg-primary-700 hover:shadow-xl"
