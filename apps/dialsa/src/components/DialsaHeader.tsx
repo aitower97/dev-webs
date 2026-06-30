@@ -166,8 +166,9 @@ export function DialsaHeader({
 
         {/* Bottom CTAs */}
         <div
-          className="space-y-3 px-8 pb-12 pt-6"
+          className="space-y-3 px-8 pt-6"
           style={{
+            paddingBottom: "max(3rem, env(safe-area-inset-bottom, 3rem))",
             opacity: menuOpen ? 1 : 0,
             transform: menuOpen ? "translateY(0)" : "translateY(16px)",
             transition: "opacity 0.5s 0.36s ease, transform 0.5s 0.36s ease",

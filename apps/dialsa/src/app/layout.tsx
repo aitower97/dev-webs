@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
 import { WhatsAppButton } from "@dev-webs/ui";
 import { BUSINESS, NAV_ITEMS } from "@/lib/constants";
@@ -19,6 +19,11 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+  themeColor: "#0d3b6f",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
