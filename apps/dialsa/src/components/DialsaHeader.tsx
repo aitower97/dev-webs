@@ -21,23 +21,14 @@ export function DialsaHeader({
 
   useEffect(() => {
     if (menuOpen) {
-      const scrollY = window.scrollY;
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
     } else {
-      const top = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
-      window.scrollTo(0, parseInt(top || "0") * -1);
     }
     return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
@@ -141,7 +132,7 @@ export function DialsaHeader({
 
       {/* Full-screen mobile menu overlay */}
       <div
-        className={`fixed inset-0 z-[190] flex flex-col lg:hidden transition-opacity duration-500 ${
+        className={`fixed inset-0 z-[190] flex flex-col lg:hidden transition-opacity duration-500 overflow-hidden touch-none ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         style={{ background: "linear-gradient(150deg, #0d3b6f 0%, #061829 100%)" }}
