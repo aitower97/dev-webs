@@ -177,6 +177,26 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     alt: "Piscina con escaleras de obra y gresite azul",
     category: "piscinas",
   },
+  {
+    src: "/images/piscinas/piscina-exterior-con-ducha.jpeg",
+    alt: "Piscina exterior terminada con ducha integrada",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-exterior-con-ducha-2.jpeg",
+    alt: "Piscina exterior con ducha y solado",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-prefabricada-poliester.jpeg",
+    alt: "Piscina prefabricada de poliéster instalada",
+    category: "piscinas",
+  },
+  {
+    src: "/images/piscinas/piscina-prefabricada-poliester-2.jpeg",
+    alt: "Piscina prefabricada de poliéster terminada",
+    category: "piscinas",
+  },
   // Chimeneas
   {
     src: "/images/chimeneas/chimenea.jpg",
@@ -303,6 +323,16 @@ export const VIDEOS = [
     src: "/videos/construccion-jacuzzi.mp4",
     title: "Proceso de construcción de jacuzzi",
     poster: "/images/obras/jacuzzi-construccion-cenital.jpg",
+  },
+  {
+    src: "/videos/contruccion-piscina.mp4",
+    title: "Construcción de piscina paso a paso",
+    poster: "/images/piscinas/piscina-construccion-fase.jpg",
+  },
+  {
+    src: "/videos/depuradora-montaje.mp4",
+    title: "Montaje e instalación de depuradora",
+    poster: "/images/depuradoras/depuradora-sistema-completo.png",
   },
 ];
 

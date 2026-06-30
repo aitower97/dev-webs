@@ -24,6 +24,14 @@ const SLIDES = [
     src: "/images/piscinas/jacuzzi-gresite-circular.jpg",
     alt: "Jacuzzi circular con acabado en gresite",
   },
+  {
+    src: "/images/piscinas/piscina-exterior-con-ducha.jpeg",
+    alt: "Piscina exterior terminada con ducha integrada",
+  },
+  {
+    src: "/images/piscinas/piscina-prefabricada-poliester.jpeg",
+    alt: "Piscina prefabricada de poliéster instalada",
+  },
 ];
 
 export function PhotoHero({ children }: { children: React.ReactNode }) {
