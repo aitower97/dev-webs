@@ -27,10 +27,7 @@ export function DialsaHeader({
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-500 ${headerBg}`}
-        style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
-      >
+      <header className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-500 ${headerBg}`}>
         <nav className="mx-auto w-full max-w-[92vw] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
           <a href="/" className="shrink-0">
@@ -130,11 +127,8 @@ export function DialsaHeader({
           WebkitOverflowScrolling: "touch",
         }}
       >
-        {/* Nav links — pt dinámico: altura header (5rem) + safe-area-inset-top */}
-        <nav
-          className="flex-shrink-0 flex flex-col justify-center px-8 pb-2"
-          style={{ paddingTop: "calc(6rem + env(safe-area-inset-top, 0px))" }}
-        >
+        {/* Nav links */}
+        <nav className="flex-shrink-0 flex flex-col justify-center px-8 pt-24 pb-2">
           {navItems.map((item, i) => (
             <a
               key={item.href}
