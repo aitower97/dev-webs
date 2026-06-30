@@ -146,7 +146,7 @@ export default function HomePage() {
             </MagneticButton>
           </div>
 
-          <div className="relative z-[60] mt-10 mb-32" style={{ animation: "float 3s ease-in-out infinite" }}>
+          <div className="relative z-[60] mt-10 mb-16 sm:mb-24" style={{ animation: "float 3s ease-in-out infinite" }}>
             <div className="flex flex-col items-center gap-2 text-white/60">
               <span className="text-sm font-bold uppercase tracking-widest">Scroll</span>
               <svg className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
@@ -159,7 +159,7 @@ export default function HomePage() {
       {SERVICES.map((service, i) => (
         <section
           key={service.title}
-          className={`relative min-h-[80vh] flex items-center overflow-hidden ${
+          className={`relative min-h-[80vh] flex items-center overflow-hidden py-20 lg:py-0 ${
             i % 2 === 0 ? "bg-white" : "bg-[#F0F7F4]"
           }`}
         >
