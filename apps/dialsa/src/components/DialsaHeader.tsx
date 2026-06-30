@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 export function DialsaHeader({
@@ -12,6 +12,7 @@ export function DialsaHeader({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -19,25 +20,22 @@ export function DialsaHeader({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Bloquea el scroll táctil en iOS sin tocar html/body (que rompería position:fixed)
   useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+    const prevent = (e: TouchEvent) => e.preventDefault();
     if (menuOpen) {
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-    } else {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
+      overlay.addEventListener("touchmove", prevent, { passive: false });
     }
-    return () => {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-    };
+    return () => overlay.removeEventListener("touchmove", prevent);
   }, [menuOpen]);
 
   const headerBg = menuOpen
     ? "bg-primary-900 py-5"
     : scrolled
     ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
-    : "bg-transparent py-5";
+    : "bg-primary-900/40 py-5 lg:bg-transparent";
 
   return (
     <>
@@ -59,7 +57,7 @@ export function DialsaHeader({
             />
           </a>
 
-          {/* Desktop nav — links in floating pill when scrolled */}
+          {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-4">
             <div
               className={`flex items-center transition-all duration-500 ${
@@ -113,9 +111,7 @@ export function DialsaHeader({
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           >
             <svg
-              className={`h-7 w-7 transition-colors ${
-                menuOpen || !scrolled ? "text-white" : "text-gray-700"
-              }`}
+              className="h-7 w-7 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -132,12 +128,13 @@ export function DialsaHeader({
 
       {/* Full-screen mobile menu overlay */}
       <div
-        className={`fixed inset-0 z-[190] flex flex-col lg:hidden transition-opacity duration-500 overflow-hidden touch-none ${
+        ref={overlayRef}
+        className={`fixed inset-0 z-[190] flex flex-col lg:hidden transition-opacity duration-500 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         style={{ background: "linear-gradient(150deg, #0d3b6f 0%, #061829 100%)" }}
       >
-        {/* Nav links — centered, big typography */}
+        {/* Nav links */}
         <nav className="flex-1 flex flex-col justify-center px-8 pt-24">
           {navItems.map((item, i) => (
             <a
@@ -152,23 +149,18 @@ export function DialsaHeader({
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
-              <svg
-                className="h-5 w-5 text-primary-400 transition-transform group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="h-5 w-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>
           ))}
         </nav>
 
-        {/* Bottom CTAs */}
+        {/* Bottom CTAs — con padding seguro para iPhone home bar */}
         <div
-          className="space-y-3 px-8 pt-6"
+          className="space-y-3 px-8 pt-6 pb-16"
           style={{
-            paddingBottom: "max(3rem, env(safe-area-inset-bottom, 3rem))",
+            paddingBottom: "max(4rem, env(safe-area-inset-bottom, 4rem))",
             opacity: menuOpen ? 1 : 0,
             transform: menuOpen ? "translateY(0)" : "translateY(16px)",
             transition: "opacity 0.5s 0.36s ease, transform 0.5s 0.36s ease",
@@ -184,6 +176,7 @@ export function DialsaHeader({
           <a
             href={`tel:${phone}`}
             className="block rounded-2xl border border-white/20 bg-white/5 py-4 text-center text-base font-semibold text-white"
+            onClick={() => setMenuOpen(false)}
           >
             {phone}
           </a>
