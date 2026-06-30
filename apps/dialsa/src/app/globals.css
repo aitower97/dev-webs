@@ -206,10 +206,13 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* iOS 26 Liquid Glass: el área de overscroll hereda este color en vez de blanco */
+  background-color: #0d3b6f;
 }
 
 body {
   overflow-x: hidden;
+  background-color: #ffffff;
 }
 
 /* Film grain — sutil, da textura editorial al conjunto */
