@@ -16,6 +16,11 @@ export function CookieBanner() {
     setShow(false);
   }
 
+  function reject() {
+    localStorage.setItem("cookies-accepted", "false");
+    setShow(false);
+  }
+
   if (!show) return null;
 
   return (
@@ -27,12 +32,20 @@ export function CookieBanner() {
             Más información
           </a>
         </p>
-        <button
-          onClick={accept}
-          className="shrink-0 rounded-xl bg-primary-600 px-6 py-2.5 text-sm font-bold text-white transition-all hover:bg-primary-700"
-        >
-          Aceptar
-        </button>
+        <div className="flex shrink-0 gap-3">
+          <button
+            onClick={reject}
+            className="rounded-xl border border-gray-500 px-6 py-2.5 text-sm font-bold text-gray-300 transition-all hover:border-gray-300 hover:text-white"
+          >
+            Rechazar
+          </button>
+          <button
+            onClick={accept}
+            className="rounded-xl bg-primary-600 px-6 py-2.5 text-sm font-bold text-white transition-all hover:bg-primary-700"
+          >
+            Aceptar
+          </button>
+        </div>
       </div>
     </div>
   );
