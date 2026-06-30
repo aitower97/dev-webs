@@ -21,6 +21,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const viewport: Viewport = {
+  viewportFit: "cover",
   themeColor: "#0d3b6f",
 };
 

@@ -23,11 +23,14 @@ export function DialsaHeader({
     ? "bg-primary-900 py-5"
     : scrolled
     ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
-    : "bg-primary-900/40 py-5 lg:bg-transparent";
+    : "bg-primary-900 py-5 lg:bg-transparent";
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-500 ${headerBg}`}>
+      <header
+        className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-500 ${headerBg}`}
+        style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
+      >
         <nav className="mx-auto w-full max-w-[92vw] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
           <a href="/" className="shrink-0">
@@ -127,8 +130,11 @@ export function DialsaHeader({
           WebkitOverflowScrolling: "touch",
         }}
       >
-        {/* Nav links */}
-        <nav className="flex-shrink-0 flex flex-col justify-center px-8 pt-24 pb-2">
+        {/* Nav links — pt dinámico: altura header (5rem) + safe-area-inset-top */}
+        <nav
+          className="flex-shrink-0 flex flex-col justify-center px-8 pb-2"
+          style={{ paddingTop: "calc(6rem + env(safe-area-inset-top, 0px))" }}
+        >
           {navItems.map((item, i) => (
             <a
               key={item.href}
