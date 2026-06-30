@@ -49,6 +49,21 @@ export const metadata: Metadata = {
     title: "Piscinas y Calefacción en Colmenar Viejo y Sierra Norte de Madrid | Dialsa",
     description:
       "Empresa familiar en Colmenar Viejo con servicio en toda la Sierra Norte de Madrid. Presupuesto gratis.",
+    images: [
+      {
+        url: "/images/piscinas/piscina-jardin-colmenar.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Piscinas y Calefacción Dialsa — Colmenar Viejo, Sierra Norte de Madrid",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Piscinas y Calefacción en Colmenar Viejo | Dialsa",
+    description:
+      "Empresa familiar con 20+ años en la Sierra Norte de Madrid. Piscinas, calefacción, chimeneas y más. ☎ 918 45 17 84",
+    images: ["/images/piscinas/piscina-jardin-colmenar.jpg"],
   },
   alternates: {
     canonical: BUSINESS.url,

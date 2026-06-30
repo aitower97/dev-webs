@@ -1,20 +1,49 @@
 import type { Metadata } from "next";
 import { Container } from "@dev-webs/ui";
-import { GALLERY_IMAGES, VIDEOS } from "@/lib/constants";
+import { BreadcrumbJsonLd } from "@dev-webs/seo";
+import { GALLERY_IMAGES, VIDEOS, BUSINESS } from "@/lib/constants";
 import { SmoothReveal } from "@/components/SmoothReveal";
 import { PageHero } from "@/components/PageHero";
 import { GalleryGrid } from "@/components/GalleryGrid";
 import { VideoShowcase } from "@/components/VideoShowcase";
 
 export const metadata: Metadata = {
-  title: "Galería",
+  title: "Galería — Piscinas, Chimeneas e Instalaciones en Sierra Norte de Madrid",
   description:
-    "Fotos y vídeos de piscinas, chimeneas, obras e instalaciones realizadas por Dialsa en Colmenar Viejo y la Sierra de Madrid.",
+    "Galería de trabajos realizados por Dialsa: piscinas privadas y comunitarias, chimeneas, instalaciones de calefacción y depuradoras en Colmenar Viejo y la Sierra Norte de Madrid.",
+  alternates: { canonical: `${BUSINESS.url}/galeria` },
 };
 
 export default function GaleriaPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: BUSINESS.url },
+          { name: "Galería", url: `${BUSINESS.url}/galeria` },
+        ]}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Galería de trabajos — Dialsa",
+            description: "Fotos y vídeos de piscinas, chimeneas, instalaciones y obras realizadas por Dialsa en Colmenar Viejo y la Sierra Norte de Madrid.",
+            url: `${BUSINESS.url}/galeria`,
+            provider: { "@type": "LocalBusiness", name: BUSINESS.legalName, url: BUSINESS.url },
+            hasPart: GALLERY_IMAGES.slice(0, 10).map((img) => ({
+              "@type": "ImageObject",
+              contentUrl: `${BUSINESS.url}${img.src}`,
+              description: img.alt,
+              author: { "@type": "LocalBusiness", name: BUSINESS.legalName },
+            })),
+          }),
+        }}
+      />
+
       <PageHero
         tag="Portfolio"
         title="Galería de Trabajos"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@dev-webs/ui";
+import { BreadcrumbJsonLd } from "@dev-webs/seo";
 import { BUSINESS } from "@/lib/constants";
 import { SmoothReveal } from "@/components/SmoothReveal";
 import { TiltCard } from "@/components/TiltCard";
@@ -9,13 +10,48 @@ import { PageHero } from "@/components/PageHero";
 import { StatsSection } from "@/components/StatsSection";
 
 export const metadata: Metadata = {
-  title: "Sobre Nosotros",
-  description: `Conoce ${BUSINESS.legalName}, empresa familiar en Colmenar Viejo.`,
+  title: "Sobre Nosotros — Empresa Familiar de Piscinas en Colmenar Viejo",
+  description:
+    "Más de 20 años construyendo piscinas e instalando calefacción en Colmenar Viejo. Empresa familiar sin intermediarios, con servicio en toda la Sierra Norte de Madrid.",
+  alternates: { canonical: `${BUSINESS.url}/sobre-nosotros` },
 };
 
 export default function SobreNosotrosPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: BUSINESS.url },
+          { name: "Sobre Nosotros", url: `${BUSINESS.url}/sobre-nosotros` },
+        ]}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: BUSINESS.legalName,
+            url: BUSINESS.url,
+            logo: `${BUSINESS.url}/images/logos/logo-azul.png`,
+            foundingDate: "2000",
+            foundingLocation: { "@type": "Place", name: "Colmenar Viejo, Madrid" },
+            description: "Empresa familiar fundada en Colmenar Viejo. Más de 20 años de experiencia en construcción y mantenimiento de piscinas, calefacción, chimeneas, depuradoras y aerotermia en la Sierra Norte de Madrid.",
+            email: "dialsa.gestion@gmail.com",
+            telephone: BUSINESS.phone,
+            address: {
+              "@type": "PostalAddress",
+              ...BUSINESS.fullAddress,
+            },
+            sameAs: [
+              "https://www.google.com/maps/place/Piscinas+y+Calefacci%C3%B3n+Dialsa+S.L/@40.6654546,-3.7722784,17z",
+              BUSINESS.instagramUrl,
+            ],
+          }),
+        }}
+      />
+
       <PageHero
         tag="Quiénes somos"
         title="Sobre Nosotros"

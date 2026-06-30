@@ -1,18 +1,61 @@
 import type { Metadata } from "next";
 import { Container, ContactForm, GoogleMap } from "@dev-webs/ui";
+import { BreadcrumbJsonLd } from "@dev-webs/seo";
 import { BUSINESS } from "@/lib/constants";
 import { SmoothReveal } from "@/components/SmoothReveal";
 import { TiltCard } from "@/components/TiltCard";
 import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Contacto",
-  description: `Contacta con Dialsa en Colmenar Viejo. Tel: ${BUSINESS.phone}. Presupuesto sin compromiso.`,
+  title: "Contacto — Presupuesto de Piscinas en Colmenar Viejo",
+  description: `Pide tu presupuesto sin compromiso a Dialsa. Especialistas en piscinas y calefacción en Colmenar Viejo. Tel: ${BUSINESS.phone}. Nos desplazamos a toda la Sierra Norte de Madrid.`,
+  alternates: { canonical: `${BUSINESS.url}/contacto` },
 };
 
 export default function ContactoPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: BUSINESS.url },
+          { name: "Contacto", url: `${BUSINESS.url}/contacto` },
+        ]}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: BUSINESS.legalName,
+            url: BUSINESS.url,
+            telephone: BUSINESS.phone,
+            email: "dialsa.gestion@gmail.com",
+            address: {
+              "@type": "PostalAddress",
+              ...BUSINESS.fullAddress,
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: BUSINESS.geo.latitude,
+              longitude: BUSINESS.geo.longitude,
+            },
+            openingHoursSpecification: [
+              { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "09:00", closes: "19:00" },
+              { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "10:00", closes: "14:00" },
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: BUSINESS.phone,
+              contactType: "customer service",
+              availableLanguage: "Spanish",
+              areaServed: BUSINESS.areaServed,
+            },
+          }),
+        }}
+      />
+
       <PageHero
         tag="Hablemos"
         title="Contacta con nosotros"

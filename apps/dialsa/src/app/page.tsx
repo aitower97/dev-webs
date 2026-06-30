@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@dev-webs/ui";
-import { LocalBusinessJsonLd } from "@dev-webs/seo";
+import { BreadcrumbJsonLd } from "@dev-webs/seo";
 import { BUSINESS, SERVICES, GALLERY_IMAGES, VIDEOS } from "@/lib/constants";
 import { SmoothReveal } from "@/components/SmoothReveal";
 import { TiltCard } from "@/components/TiltCard";
@@ -10,21 +11,98 @@ import { HorizontalGallery } from "@/components/HorizontalGallery";
 import { VideoShowcase } from "@/components/VideoShowcase";
 import { StatsSection } from "@/components/StatsSection";
 
+export const metadata: Metadata = {
+  title: "Piscinas y Calefacción en Colmenar Viejo | Dialsa",
+  description:
+    "Empresa familiar en Colmenar Viejo especialista en construcción y mantenimiento de piscinas, calefacción, chimeneas, depuradoras y aerotermia. Más de 20 años en la Sierra Norte de Madrid. ☎ 918 45 17 84",
+  alternates: { canonical: BUSINESS.url },
+};
+
 export default function HomePage() {
   return (
     <>
-      <LocalBusinessJsonLd
-        data={{
-          type: "LocalBusiness",
-          name: BUSINESS.legalName,
-          description: BUSINESS.description,
-          url: BUSINESS.url,
-          telephone: BUSINESS.phone,
-          address: BUSINESS.fullAddress,
-          geo: BUSINESS.geo,
-          openingHours: ["Mo-Fr 09:00-19:00", "Sa 10:00-14:00"],
+      {/* LocalBusiness — schema completo con sameAs, imagen y servicios */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: BUSINESS.legalName,
+            description: BUSINESS.description,
+            url: BUSINESS.url,
+            telephone: BUSINESS.phone,
+            email: "dialsa.gestion@gmail.com",
+            priceRange: "€€",
+            image: [
+              `${BUSINESS.url}/images/piscinas/piscina-jardin-colmenar.jpg`,
+              `${BUSINESS.url}/images/piscinas/piscina-exterior-con-ducha.jpeg`,
+              `${BUSINESS.url}/images/tienda/tienda-noche-virgen.png`,
+            ],
+            logo: `${BUSINESS.url}/images/logos/logo-azul.png`,
+            address: {
+              "@type": "PostalAddress",
+              ...BUSINESS.fullAddress,
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: BUSINESS.geo.latitude,
+              longitude: BUSINESS.geo.longitude,
+            },
+            openingHoursSpecification: [
+              { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "09:00", closes: "19:00" },
+              { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "10:00", closes: "14:00" },
+            ],
+            areaServed: BUSINESS.areaServed,
+            sameAs: [
+              "https://www.google.com/maps/place/Piscinas+y+Calefacci%C3%B3n+Dialsa+S.L/@40.6654546,-3.7722784,17z",
+              BUSINESS.instagramUrl,
+            ],
+            hasMap: "https://www.google.com/maps/place/Piscinas+y+Calefacci%C3%B3n+Dialsa+S.L/@40.6654546,-3.7722784,17z",
+            knowsAbout: ["Construcción de piscinas", "Calefacción", "Chimeneas", "Depuradoras", "Aerotermia", "Aire acondicionado", "Fontanería"],
+          }),
         }}
       />
+
+      {/* FAQ — preguntas frecuentes para rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "¿Construyen piscinas en Colmenar Viejo?",
+                acceptedAnswer: { "@type": "Answer", text: "Sí, Dialsa construye y mantiene piscinas privadas y comunitarias en Colmenar Viejo desde hace más de 20 años. Ofrecemos presupuesto gratuito sin compromiso." },
+              },
+              {
+                "@type": "Question",
+                name: "¿En qué zonas trabaja Dialsa?",
+                acceptedAnswer: { "@type": "Answer", text: "Trabajamos en Colmenar Viejo, Soto del Real, Manzanares el Real, San Agustín de Guadalix y toda la Sierra Norte de Madrid." },
+              },
+              {
+                "@type": "Question",
+                name: "¿Hacen presupuestos gratis?",
+                acceptedAnswer: { "@type": "Answer", text: "Sí, el presupuesto es completamente gratuito y sin compromiso. Nos desplazamos a tu domicilio para valorar el proyecto." },
+              },
+              {
+                "@type": "Question",
+                name: "¿Tienen servicio de mantenimiento de piscinas?",
+                acceptedAnswer: { "@type": "Answer", text: "Sí, ofrecemos mantenimiento de piscinas privadas y comunitarias: limpieza, tratamiento de agua, revisión de depuradoras y sistemas de filtración." },
+              },
+              {
+                "@type": "Question",
+                name: "¿Instalan calderas y sistemas de calefacción?",
+                acceptedAnswer: { "@type": "Answer", text: "Sí, instalamos y mantenemos calderas, radiadores, suelo radiante, aerotermia y chimeneas en viviendas particulares y comunidades de toda la Sierra Norte de Madrid." },
+              },
+            ],
+          }),
+        }}
+      />
+
+      <BreadcrumbJsonLd items={[{ name: "Inicio", url: BUSINESS.url }]} />
 
       {/* ===== HERO — Slideshow de fotos ===== */}
       <PhotoHero>

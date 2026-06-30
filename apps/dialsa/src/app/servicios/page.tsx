@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@dev-webs/ui";
+import { ServiceJsonLd, BreadcrumbJsonLd } from "@dev-webs/seo";
 import { SERVICES, BUSINESS } from "@/lib/constants";
 import { SmoothReveal } from "@/components/SmoothReveal";
 import { TiltCard } from "@/components/TiltCard";
@@ -8,13 +9,36 @@ import { MagneticButton } from "@/components/MagneticButton";
 import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Servicios",
-  description: `Piscinas, calefacción, chimeneas, riego, gas, fontanería y aire acondicionado en ${BUSINESS.shortAddress}.`,
+  title: "Servicios — Piscinas, Calefacción, Chimeneas y Aerotermia",
+  description:
+    "Construcción y mantenimiento de piscinas, instalación de calefacción, chimeneas, depuradoras, aerotermia y aire acondicionado en Colmenar Viejo y Sierra Norte de Madrid. Presupuesto gratis.",
+  alternates: { canonical: `${BUSINESS.url}/servicios` },
 };
 
 export default function ServiciosPage() {
   return (
     <>
+      {SERVICES.map((service) => (
+        <ServiceJsonLd
+          key={service.title}
+          data={{
+            name: service.title,
+            description: service.description,
+            provider: BUSINESS.legalName,
+            areaServed: BUSINESS.areaServed,
+            url: `${BUSINESS.url}${service.href}`,
+            image: `${BUSINESS.url}${service.image}`,
+          }}
+        />
+      ))}
+
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: BUSINESS.url },
+          { name: "Servicios", url: `${BUSINESS.url}/servicios` },
+        ]}
+      />
+
       <PageHero
         tag="Lo que hacemos"
         title="Nuestros Servicios"
