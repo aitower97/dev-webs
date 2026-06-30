@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export function DialsaHeader({
@@ -12,24 +12,12 @@ export function DialsaHeader({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Bloquea el scroll táctil en iOS sin tocar html/body (que rompería position:fixed)
-  useEffect(() => {
-    const overlay = overlayRef.current;
-    if (!overlay) return;
-    const prevent = (e: TouchEvent) => e.preventDefault();
-    if (menuOpen) {
-      overlay.addEventListener("touchmove", prevent, { passive: false });
-    }
-    return () => overlay.removeEventListener("touchmove", prevent);
-  }, [menuOpen]);
 
   const headerBg = menuOpen
     ? "bg-primary-900 py-5"
@@ -126,21 +114,26 @@ export function DialsaHeader({
         </nav>
       </header>
 
-      {/* Full-screen mobile menu overlay */}
+      {/* Full-screen mobile menu overlay — overflow-y:scroll + overscroll-behavior:contain
+          permite scroll interno en móviles pequeños sin que el body se mueva */}
       <div
-        ref={overlayRef}
         className={`fixed inset-0 z-[190] flex flex-col lg:hidden transition-opacity duration-500 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        style={{ background: "linear-gradient(150deg, #0d3b6f 0%, #061829 100%)" }}
+        style={{
+          background: "linear-gradient(150deg, #0d3b6f 0%, #061829 100%)",
+          overflowY: "scroll",
+          overscrollBehavior: "contain",
+          WebkitOverflowScrolling: "touch",
+        }}
       >
         {/* Nav links */}
-        <nav className="flex-1 flex flex-col justify-center px-8 pt-24">
+        <nav className="flex-shrink-0 flex flex-col justify-center px-8 pt-24 pb-2">
           {navItems.map((item, i) => (
             <a
               key={item.href}
               href={item.href}
-              className="group flex items-center justify-between border-b border-white/10 py-5 font-display text-[1.9rem] font-bold text-white/70 hover:text-white transition-colors"
+              className="group flex items-center justify-between border-b border-white/10 py-4 font-display text-[1.75rem] font-bold text-white/70 hover:text-white transition-colors"
               style={{
                 opacity: menuOpen ? 1 : 0,
                 transform: menuOpen ? "translateX(0)" : "translateX(-20px)",
@@ -156,11 +149,10 @@ export function DialsaHeader({
           ))}
         </nav>
 
-        {/* Bottom CTAs — con padding seguro para iPhone home bar */}
+        {/* Bottom CTAs */}
         <div
-          className="space-y-3 px-8 pt-6 pb-16"
+          className="flex-shrink-0 space-y-3 px-8 pt-6 pb-12"
           style={{
-            paddingBottom: "max(4rem, env(safe-area-inset-bottom, 4rem))",
             opacity: menuOpen ? 1 : 0,
             transform: menuOpen ? "translateY(0)" : "translateY(16px)",
             transition: "opacity 0.5s 0.36s ease, transform 0.5s 0.36s ease",
