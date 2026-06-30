@@ -111,7 +111,7 @@ export function DialsaHeader({
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           >
             <svg
-              className="h-7 w-7 text-white"
+              className={`h-7 w-7 transition-colors ${scrolled && !menuOpen ? "text-gray-700" : "text-white"}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
