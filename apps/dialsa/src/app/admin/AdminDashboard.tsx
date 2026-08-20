@@ -29,18 +29,32 @@ function Stars({ rating }: { rating: number }) {
 
 function ReviewCard({ review }: { review: Review }) {
   const [response, setResponse] = useState("");
+  const [editing, setEditing] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [genError, setGenError] = useState("");
 
   async function generate() {
     setGenerating(true);
-    const res = await fetch("/api/reviews/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ review }),
-    });
-    const data = await res.json();
-    setResponse(data.response ?? "Error generando respuesta");
+    setGenError("");
+    try {
+      const res = await fetch("/api/reviews/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ review }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.response) {
+        setGenError(data.error ?? "Error generando respuesta");
+        setEditing(true);
+      } else {
+        setResponse(data.response);
+        setEditing(true);
+      }
+    } catch {
+      setGenError("No se pudo conectar con el generador de IA");
+      setEditing(true);
+    }
     setGenerating(false);
   }
 
@@ -88,43 +102,58 @@ function ReviewCard({ review }: { review: Review }) {
         <p className="text-sm text-gray-400 italic">Sin comentario escrito</p>
       )}
 
-      {!response && (
-        <button
-          onClick={generate}
-          disabled={generating}
-          className="flex items-center gap-2 rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60"
-        >
-          {generating ? (
-            <>
-              <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-              Generando...
-            </>
-          ) : (
-            <>
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              Generar respuesta con IA
-            </>
-          )}
-        </button>
+      {!editing && (
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={generate}
+            disabled={generating}
+            className="flex items-center gap-2 rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60"
+          >
+            {generating ? (
+              <>
+                <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Generando...
+              </>
+            ) : (
+              <>
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Generar respuesta con IA
+              </>
+            )}
+          </button>
+          <button
+            onClick={() => setEditing(true)}
+            className="flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-600 transition-colors hover:bg-gray-50"
+          >
+            Responder manualmente
+          </button>
+        </div>
       )}
 
-      {response && (
+      {genError && (
+        <p className="text-xs text-red-500">{genError} — puedes escribir la respuesta a mano.</p>
+      )}
+
+      {editing && (
         <div className="space-y-3">
           <textarea
             value={response}
             onChange={(e) => setResponse(e.target.value)}
             rows={5}
+            placeholder="Escribe la respuesta a la reseña..."
+            autoFocus
             className="w-full rounded-xl border border-gray-200 p-4 text-sm text-gray-700 leading-relaxed focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 resize-none"
           />
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={copy}
-              className="flex items-center gap-2 rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-700"
+              disabled={!response}
+              className="flex items-center gap-2 rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-700 disabled:opacity-60"
             >
               {copied ? "¡Copiado!" : "Copiar respuesta"}
             </button>
@@ -133,7 +162,17 @@ function ReviewCard({ review }: { review: Review }) {
               disabled={generating}
               className="flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-600 transition-colors hover:bg-gray-50 disabled:opacity-60"
             >
-              Regenerar
+              {generating ? "Generando..." : "Generar con IA"}
+            </button>
+            <button
+              onClick={() => {
+                setEditing(false);
+                setResponse("");
+                setGenError("");
+              }}
+              className="flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-500 transition-colors hover:bg-gray-50"
+            >
+              Cancelar
             </button>
           </div>
           <p className="text-xs text-gray-400">
